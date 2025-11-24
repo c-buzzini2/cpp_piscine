@@ -6,18 +6,18 @@
 /*   By: cbuzzini <cbuzzini@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 13:53:36 by cbuzzini          #+#    #+#             */
-/*   Updated: 2025/11/21 16:39:26 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2025/11/24 14:57:04 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
-int ft_parse_command(PhoneBook p_book, std::string line)
+int ft_parse_command(PhoneBook* p_book, std::string line)
 {
 	if (line == "EXIT")
 		return (1);
 	else if (line == "ADD")
-		return (p_book.ft_add_contact());
+		return (p_book->ft_add_contact());
 	return (0);
 }
 
@@ -34,7 +34,7 @@ int main(void)
 		<< "Type ADD, SEARCH, or EXIT"
 		<< std::endl;
 		std::cin.getline(buff, 7);
-		ret = ft_parse_command(p_book, buff);
+		ret = ft_parse_command(&p_book, buff);
 		if (ret == 1)
 			break;
 		if (ret == 2)

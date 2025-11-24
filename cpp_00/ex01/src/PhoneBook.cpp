@@ -6,23 +6,38 @@
 /*   By: cbuzzini <cbuzzini@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 14:42:23 by cbuzzini          #+#    #+#             */
-/*   Updated: 2025/11/21 16:36:40 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2025/11/24 15:44:09 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 #include "Contact.hpp"
 
-int    ft_add_contact()
+int PhoneBook::_total_contacts = 0;
+
+int    PhoneBook::ft_add_contact(void)
 {
-    char    buff[250];
-    
-    std::cout << "First name:"
-	<< std::endl;
-    std::cin.getline(buff, 30);
-    //CALL SET_INFO PARAMS F_NAME AND LINE
-    //THEN, DO THE SAME FOR ALL PARAMETERS
-    //CREATE FUNCTION THAT CHECKS IF THE INPUT IS EMPTY, AND THEN SET THE ENTIRE CONTACT TO NULL AND RETURNS 2, TO START THE PROMPT AGAIN
+    char        buff[250];
+    const char  *prompts[] = 
+    {
+    "Nickname:",
+    "First name:",
+    "Last name:",
+    "Phone number:",
+    "Darkest secret:"
+    };
+    for (int i = 0; i < 5; i++)
+    {
+        std::cout << prompts[i]
+        << std::endl;
+        if (i != 4)
+            std::cin.getline(buff, 20);
+        else
+            std::cin.getline(buff, 250);
+        this->_contacts[this->_total_contacts % 8].ft_set_info(i, buff);
+    }
     //MAKE SURE THAT THAT RETURN 2 GOES BACK THE ENTIRE CHAIN
-    //RUN THAT FUNCTION FOR EVERY NEW INPUT
+    //else (ONLY IF EVERYTHING IS OK)
+    PhoneBook::_total_contacts++;
+    return (0);
 }

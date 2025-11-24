@@ -6,7 +6,7 @@
 /*   By: cbuzzini <cbuzzini@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 13:53:36 by cbuzzini          #+#    #+#             */
-/*   Updated: 2025/11/21 16:35:26 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2025/11/24 14:57:24 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 class PhoneBook
 {
 	public:
-		int ft_add_contact();
+		int ft_add_contact(void);
 		//PhoneBook(void);
 		//~PhoneBook(void);
 		//functions to get and set contacts

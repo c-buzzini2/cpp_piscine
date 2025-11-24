@@ -6,7 +6,7 @@
 /*   By: cbuzzini <cbuzzini@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 13:53:36 by cbuzzini          #+#    #+#             */
-/*   Updated: 2025/11/21 16:30:52 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2025/11/24 15:24:54 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 class Contact
 {
 	public:
-		void	ft_set_info(std::string info_type, std::string content);
+		void	ft_set_info(int info_type, std::string content);
 		//Contact(void);
 		//~Contact(void);
 		//functions to add and search contacts
