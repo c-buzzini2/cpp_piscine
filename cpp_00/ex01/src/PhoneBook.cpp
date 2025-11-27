@@ -6,7 +6,7 @@
 /*   By: cbuzzini <cbuzzini@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 14:42:23 by cbuzzini          #+#    #+#             */
-/*   Updated: 2025/11/27 16:05:56 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2025/11/27 18:20:51 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int    PhoneBook::ft_add_contact(void)
     return (0);
 }
 
-void    PhoneBook::ft_print_contact(int i)
+void    PhoneBook::ft_print_contact(int i) const
 {
 	const char  *fields[] = 
     {
@@ -45,7 +45,7 @@ void    PhoneBook::ft_print_contact(int i)
 	}
 }
 
-std::string PhoneBook::ft_truncate_field(const std::string &field)
+std::string PhoneBook::ft_truncate_field(const std::string &field) const
 {
     if (field.length() > 10)
         return (field.substr(0, 9) + ".");
@@ -53,7 +53,7 @@ std::string PhoneBook::ft_truncate_field(const std::string &field)
 }
 
 
-void    PhoneBook::ft_display_list(void)
+void    PhoneBook::ft_display_list(void) const
 {
 	int i;
 	int	to_print;
@@ -88,7 +88,7 @@ void    PhoneBook::ft_display_list(void)
 	}
 }
 
-int    PhoneBook::ft_search_contact(void)
+int    PhoneBook::ft_search_contact(void) const
 {
     std::string			buff;
 	int 				n;
@@ -101,7 +101,7 @@ int    PhoneBook::ft_search_contact(void)
 	if (!(ss >> n) || !(ss.eof()) || (n < 0) 
 		|| (_total_contacts < 8 && n >= _total_contacts) || n > 7)
 	{
-		std::cout << "Invalid input"
+		std::cerr << "Invalid input"
 		<< std::endl;
 	}
 	else

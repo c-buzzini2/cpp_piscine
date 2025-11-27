@@ -6,7 +6,7 @@
 /*   By: cbuzzini <cbuzzini@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 15:15:53 by cbuzzini          #+#    #+#             */
-/*   Updated: 2025/11/27 17:47:01 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2025/11/27 18:21:48 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int	Contact::ft_create_contact(void)
 {
-	std::string       buff;
+	std::string	buff;
     const char  *prompts[] = 
     {
 		"First name:",
@@ -38,7 +38,7 @@ int	Contact::ft_create_contact(void)
 	return (0);
 }
 
-bool	Contact::ft_input_is_valid(std::string input)
+bool	Contact::ft_input_is_valid(std::string input) const
 {
 	int i;
 
@@ -52,8 +52,28 @@ bool	Contact::ft_input_is_valid(std::string input)
 		}
 	}
 	std::cerr << "Field cannot be left empty"
-		<< std::endl; //PRINT ALL ERRORS TO STDERR
+		<< std::endl;
 	return (false);
+}
+
+bool	Contact::ft_phone_is_valid(std::string input) const
+{
+	int i;
+
+	i = 0;
+	if (input[i] == '+')
+		i++;
+	while (input[i])
+	{
+		if (!std::isdigit(input[i]))
+		{
+			std::cerr << "Phone must be digits"
+					<< std::endl;
+			return (false);
+		}
+		i++;
+	}
+	return (true);
 }
 
 int	Contact::ft_set_info(int info_type, std::string content)
@@ -67,13 +87,18 @@ int	Contact::ft_set_info(int info_type, std::string content)
 	else if (info_type == 2)
         this->_nick = content;
     else if (info_type == 3)
-        this->_secret = content;
+	{
+		if (!ft_phone_is_valid(content))
+			return (2);
+		this->_phone_nb = content;
+	}
 	else if (info_type == 4)
-		this->_phone_nb = content; //CHECK IF IT'S DIGITS AND +
+		this->_secret = content;
+
 	return (0);
 }
 
-std::string Contact::ft_get_info(int info_type)
+std::string Contact::ft_get_info(int info_type) const
 {
     if (info_type == 0)
         return(this->_f_name);
@@ -82,9 +107,9 @@ std::string Contact::ft_get_info(int info_type)
 	else if (info_type == 2)
         return(this->_nick);
     else if (info_type == 3)
-        return(this->_secret);
-    else if (info_type == 4)
         return(this->_phone_nb);
+    else if (info_type == 4)
+        return(this->_secret);
     else
 		return (NULL);
 }

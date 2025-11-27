@@ -6,7 +6,7 @@
 /*   By: cbuzzini <cbuzzini@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 13:53:36 by cbuzzini          #+#    #+#             */
-/*   Updated: 2025/11/27 16:06:14 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2025/11/27 17:50:55 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int main(void)
 		<< std::endl;
 		std::getline(std::cin, buff);
 		ret = ft_parse_command(&p_book, buff);
-		if (ret == 1) // are there other sources of errors?
+		if (ret == 1)
 			break;
 		if (ret == 2)
 			continue;
