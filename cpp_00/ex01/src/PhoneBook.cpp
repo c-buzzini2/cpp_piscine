@@ -6,7 +6,7 @@
 /*   By: cbuzzini <cbuzzini@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 14:42:23 by cbuzzini          #+#    #+#             */
-/*   Updated: 2025/11/24 15:44:09 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2025/11/27 16:05:56 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,27 +17,94 @@ int PhoneBook::_total_contacts = 0;
 
 int    PhoneBook::ft_add_contact(void)
 {
-    char        buff[250];
-    const char  *prompts[] = 
-    {
-    "Nickname:",
-    "First name:",
-    "Last name:",
-    "Phone number:",
-    "Darkest secret:"
-    };
-    for (int i = 0; i < 5; i++)
-    {
-        std::cout << prompts[i]
-        << std::endl;
-        if (i != 4)
-            std::cin.getline(buff, 20);
-        else
-            std::cin.getline(buff, 250);
-        this->_contacts[this->_total_contacts % 8].ft_set_info(i, buff);
-    }
-    //MAKE SURE THAT THAT RETURN 2 GOES BACK THE ENTIRE CHAIN
-    //else (ONLY IF EVERYTHING IS OK)
+	Contact	new_ctct;
+
+	if (new_ctct.ft_create_contact())
+		return (2);
+    this->_contacts[this->_total_contacts % 8] = new_ctct;
     PhoneBook::_total_contacts++;
+    return (0);
+}
+
+void    PhoneBook::ft_print_contact(int i)
+{
+	const char  *fields[] = 
+    {
+		"First name: ",
+		"Last name: ",
+		"Nickname: ",
+    	"Phone number: ",
+    	"Darkest secret: "
+    };
+
+	for (int j = 0; j < 5; j++)
+	{
+	    std::cout << fields[j];
+		std::cout << this->_contacts[i].ft_get_info(j)
+				<< std::endl;
+	}
+}
+
+std::string PhoneBook::ft_truncate_field(const std::string &field)
+{
+    if (field.length() > 10)
+        return (field.substr(0, 9) + ".");
+    return (field);
+}
+
+
+void    PhoneBook::ft_display_list(void)
+{
+	int i;
+	int	to_print;
+	
+	std::cout << std::right;
+    std::cout << std::setw(10) << "Index"
+			<< std::setw(1) << "|"
+			<< std::setw(10) << "First name"
+			<< std::setw(1) << "|"
+            << std::setw(10) << "Last name"
+			<< std::setw(1) << "|"
+            << std::setw(10) << "Nickname"
+			<< std::endl;
+			
+	if (_total_contacts > 8)
+		to_print = 8;
+	else
+		to_print = _total_contacts;
+
+	for (i = 0; i < to_print; i++)
+	{
+		std::cout << std::setw(10) << i
+				<< std::setw(1) << "|";
+
+		for (int j = 0; j < 3; j++)
+		{
+			std::cout << std::setw(10) << ft_truncate_field(this->_contacts[i].ft_get_info(j));
+			if (j < 2)
+				std::cout << std::setw(1) << "|";
+		}
+		std::cout << std::endl;
+	}
+}
+
+int    PhoneBook::ft_search_contact(void)
+{
+    std::string			buff;
+	int 				n;
+	
+	this->ft_display_list();
+	std::cout << "\nType index number to see contact"
+	<< std::endl;
+	std::getline(std::cin, buff);
+	std::stringstream	ss(buff);
+	if (!(ss >> n) || !(ss.eof()) || (n < 0) 
+		|| (_total_contacts < 8 && n >= _total_contacts) || n > 7)
+	{
+		std::cout << "Invalid input"
+		<< std::endl;
+	}
+	else
+		this->ft_print_contact(n);
     return (0);
 }

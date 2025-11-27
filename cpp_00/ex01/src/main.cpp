@@ -6,7 +6,7 @@
 /*   By: cbuzzini <cbuzzini@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 13:53:36 by cbuzzini          #+#    #+#             */
-/*   Updated: 2025/11/24 14:57:04 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2025/11/27 16:06:14 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,28 @@ int ft_parse_command(PhoneBook* p_book, std::string line)
 		return (1);
 	else if (line == "ADD")
 		return (p_book->ft_add_contact());
+	else if (line == "SEARCH")
+		return (p_book->ft_search_contact());
+	else
+		return (2);
 	return (0);
 }
 
 int main(void)
 {
 	PhoneBook	p_book;
-	char		buff[7];
+	std::string	buff;
 	int			ret;
 
 	while (1)
 	{
-		std::cout << "Welcome to the Crappy Awesome Phonebook Software."
+		std::cout << "\nWelcome to the Crappy Awesome Phonebook Software."
 		<< std::endl
 		<< "Type ADD, SEARCH, or EXIT"
 		<< std::endl;
-		std::cin.getline(buff, 7);
+		std::getline(std::cin, buff);
 		ret = ft_parse_command(&p_book, buff);
-		if (ret == 1)
+		if (ret == 1) // are there other sources of errors?
 			break;
 		if (ret == 2)
 			continue;
