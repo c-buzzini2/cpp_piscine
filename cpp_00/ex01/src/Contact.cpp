@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbuzzini <cbuzzini@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: cbuzzini <cbuzzini@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 15:15:53 by cbuzzini          #+#    #+#             */
-/*   Updated: 2025/11/27 18:21:48 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/01/06 20:26:07 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ bool	Contact::ft_input_is_valid(std::string input) const
 		{
 			if (!std::isspace(input[i]))
 				return (true);
+			i++;
 		}
 	}
 	std::cerr << "Field cannot be left empty"
