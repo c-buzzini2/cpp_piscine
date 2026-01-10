@@ -32,7 +32,7 @@ public:
 	Account( int initial_deposit );
 	~Account( void );
 
-	void	makeDeposit( int deposit );
+ 	void	makeDeposit( int deposit );
 	bool	makeWithdrawal( int withdrawal );
 	int		checkAmount( void ) const;
 	void	displayStatus( void ) const;
@@ -40,7 +40,7 @@ public:
 
 private:
 
-	static int	_nbAccounts;
+ 	static int	_nbAccounts;
 	static int	_totalAmount;
 	static int	_totalNbDeposits;
 	static int	_totalNbWithdrawals;
@@ -52,7 +52,7 @@ private:
 	int				_nbDeposits;
 	int				_nbWithdrawals;
 
-	Account( void );
+	//Account( void );
 
 };
 
