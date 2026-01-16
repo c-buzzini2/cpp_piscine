@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbuzzini <cbuzzini@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/15 15:17:34 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/01/16 15:28:02 by cbuzzini         ###   ########.fr       */
+/*   Created: 2025/11/20 13:53:36 by cbuzzini          #+#    #+#             */
+/*   Updated: 2026/01/15 15:41:36 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "Zombie.h"
+#ifndef ZOMBIE_HPP
+#define ZOMBIE_HPP
 
-//START HERE!!! CHECK FOR LEAKS
+#include <iostream>
 
-int main(void)
+class Zombie
 {
-	randomChump("Ana");
-	
-	Zombie *zb = newZombie("Maria");
-	zb->announce();
-	delete(zb);
-}
+	public:
+		void	announce(void);
+		void	SetName(std::string name);
+		~Zombie(void);
+		
+	private:
+		std::string	name;
+};
+
+#endif

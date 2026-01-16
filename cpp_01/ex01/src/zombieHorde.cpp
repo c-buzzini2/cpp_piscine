@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ZombieHorde.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbuzzini <cbuzzini@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/15 15:17:34 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/01/16 15:28:02 by cbuzzini         ###   ########.fr       */
+/*   Created: 2026/01/15 15:19:02 by cbuzzini          #+#    #+#             */
+/*   Updated: 2026/01/16 15:21:40 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "Zombie.h"
+#include "Zombie.hpp"
+#include "Zombie.h"
 
-//START HERE!!! CHECK FOR LEAKS
-
-int main(void)
+Zombie* zombieHorde(int N, std::string name)
 {
-	randomChump("Ana");
-	
-	Zombie *zb = newZombie("Maria");
-	zb->announce();
-	delete(zb);
+    Zombie  *zb = new Zombie[N];
+    
+    for(int i = 0; i < N; i++)
+        zb[i].SetName(name);
+    return(zb);
 }

@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbuzzini <cbuzzini@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/15 15:17:34 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/01/16 15:28:02 by cbuzzini         ###   ########.fr       */
+/*   Created: 2026/01/15 15:06:44 by cbuzzini          #+#    #+#             */
+/*   Updated: 2026/01/15 15:42:42 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "Zombie.h"
+#include "Zombie.hpp"
 
-//START HERE!!! CHECK FOR LEAKS
-
-int main(void)
+void Zombie::announce(void)
 {
-	randomChump("Ana");
-	
-	Zombie *zb = newZombie("Maria");
-	zb->announce();
-	delete(zb);
+	std::cout << this->name << ": BraiiiiiiinnnzzzZ..." << std::endl;
+}
+
+void Zombie::SetName(std::string name)
+{
+	this->name = name;
+}
+
+
+Zombie::~Zombie(void)
+{
+	std::cout << this->name << " destructed" << std::endl;
 }

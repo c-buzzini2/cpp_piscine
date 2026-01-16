@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Zombie.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbuzzini <cbuzzini@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/15 15:17:34 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/01/16 15:28:02 by cbuzzini         ###   ########.fr       */
+/*   Created: 2026/01/15 15:49:27 by cbuzzini          #+#    #+#             */
+/*   Updated: 2026/01/16 15:12:34 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "Zombie.h"
+#ifndef ZOMBIE_H
+#define ZOMBIE_H
 
-//START HERE!!! CHECK FOR LEAKS
+#include "Zombie.hpp"
 
-int main(void)
-{
-	randomChump("Ana");
-	
-	Zombie *zb = newZombie("Maria");
-	zb->announce();
-	delete(zb);
-}
+Zombie* zombieHorde(int N, std::string name);
+
+#endif
