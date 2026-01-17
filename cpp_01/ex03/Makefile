@@ -6,7 +6,7 @@
 #    By: cbuzzini <cbuzzini@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/24 12:59:11 by cbuzzini          #+#    #+#              #
-#    Updated: 2026/01/16 15:41:53 by cbuzzini         ###   ########.fr        #
+#    Updated: 2026/01/17 13:01:14 by cbuzzini         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,10 @@ SRC_DIR = src/
 OBJ_DIR = obj/
 INCLUDE_DIR = includes/
 
-SRC_FILES = main.cpp
+SRC_FILES = main.cpp \
+			Weapon.cpp \
+			HumanA.cpp \
+			HumanB.cpp
 			
 SRC = $(addprefix $(SRC_DIR), $(SRC_FILES))
 OBJ_FILES = $(addprefix $(OBJ_DIR), $(SRC_FILES:.cpp=.o))
