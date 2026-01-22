@@ -3,36 +3,63 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbuzzini <cbuzzini@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: cbuzzini <cbuzzini@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 10:57:58 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/01/20 21:19:59 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/01/22 11:28:43 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <fstream>
+#include <cerrno>
+#include <cstring>
 
-int main(void) //see argc agv + error checks
+void	ft_search_and_replace(char **argv, std::ifstream& src, std::ofstream& dest)
 {
-	std::ifstream	src("test.txt"); //make sure to open the right files
-	std::ofstream	dest("test_out.txt");
 	std::string		line;
 	std::string		line_post;
+	int				len_s1 = std::string(argv[2]).length();
 
-	while (std::getline(src, line)) //read, search, replace, print (incl newline)
+	while (std::getline(src, line))
 	{
-		dest << line;
+		std::string::size_type pos = line.find(argv[2]);
+		if (pos == std::string::npos)
+			line_post = line;
+		else
+		{
+			line_post.assign(line, 0, pos);
+			line_post.append(argv[3]);
+			line_post.append(line, pos + len_s1);
+		}
+		dest << line_post;
 		dest << std::endl;
 	}
 }
 
-/*     // search
-    std::string::size_type pos = text.find(pattern);
-
-    // check if found
-    if (pos != std::string::npos) {
-        std::cout << "Found at index " << pos << std::endl;
-    } else {
-        std::cout << "Not found!" << std::endl;
-    } */
+int main(int argc, char **argv)
+{
+	if (argc != 4 || argv[2][0] == '\0')
+	{
+		std::cerr << "Program needs three parameters in this order: filename,"
+					<< "non-empty string to be replaced and replacing string";
+		return (1);
+	}
+	
+	std::ifstream	src(argv[1]);
+	if (!src.is_open())
+	{
+    	std::cerr << "Failed to open src file: " << std::strerror(errno) << '\n';
+		return (1);
+	}
+	
+	std::string		outfile_name = std::string(argv[1]) + ".replace";
+	std::ofstream	dest(outfile_name.c_str());
+		if (!dest.is_open())
+	{
+    	std::cerr << "Failed to open dest file: " << std::strerror(errno) << '\n';
+		return (1);
+	}
+	ft_search_and_replace(argv, src, dest);
+	return (0);
+}
