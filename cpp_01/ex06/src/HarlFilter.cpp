@@ -6,7 +6,7 @@
 /*   By: cbuzzini <cbuzzini@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 14:44:02 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/01/23 11:37:20 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/01/23 12:34:39 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,37 +14,33 @@
 
 void    Harl::complain(std::string level)
 {	
-    std::map<std::string, int> level_nb;
+    std::string levels[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+    int         level_nb = -1;	
 
-    level_nb["DEBUG"] = 1;
-    level_nb["INFO"] = 2;
-    level_nb["WARNING"] = 3;
-    level_nb["ERROR"] = 4;
-
-	std::map<std::string, int>::iterator it = level_nb.find(level);
-    if (it != level_nb.end())
+	for (int i = 0; i < 4; i++)
 	{
-        int nb = it->second;
-        switch (nb)
-        {
-            case 1:
-                this->debug();
-                //fall through
-            case 2:
-                this->info();
-                //fall through
-            case 3:
-                this->warning();
-                //fall through
-            case 4:
-                this->error();
-                //fall through
+		if (level == levels[i])
+			level_nb = i;
+	}
+    switch (level_nb)
+    {
+        case 0:
+            this->debug();
+            //fall through
+        case 1:
+            this->info();
+            //fall through
+        case 2:
+            this->warning();
+            //fall through
+        case 3:
+            this->error();
+            break;
+        default:
+            std::cout << "[ Probably complaining about insignificant problems ]" 
+					<< std::endl;
         }
     }
-    else
-		std::cout << "[ Probably complaining about insignificant problems ]" 
-					<< std::endl; 
-}
 
 void    Harl::debug(void)
 {

@@ -6,7 +6,7 @@
 /*   By: cbuzzini <cbuzzini@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 14:44:02 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/01/23 11:34:33 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/01/23 12:21:46 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,21 @@ void    Harl::complain(std::string level)
 		std::cerr << "Please, enter a level\n";
 		return;
 	}
+    
+    std::string levels[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 	
-    std::map<std::string, void(Harl::*)(void)> funcMap;
+    typedef void (Harl::*Hrl_fcts)(void);
+    Hrl_fcts fcts[] = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
 
-    funcMap["DEBUG"] = &Harl::debug;
-    funcMap["INFO"] = &Harl::info;
-    funcMap["WARNING"] = &Harl::warning;
-    funcMap["ERROR"] = &Harl::error;
-
-    std::map<std::string, void(Harl::*)(void)>::iterator it = funcMap.find(level);
-    if (it != funcMap.end()) 
-        (this->*(it->second))();
-    else
-        std::cerr << "Level does not exist\n";
- 
+	for (int i = 0; i < 4; i++)
+	{
+		if (level == levels[i])
+		{
+			(this->*fcts[i])();
+			return;
+		}
+	}
+    std::cerr << "Level does not exist\n";
 }
 
 void    Harl::debug(void)

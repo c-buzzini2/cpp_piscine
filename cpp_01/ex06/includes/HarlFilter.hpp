@@ -6,7 +6,7 @@
 /*   By: cbuzzini <cbuzzini@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 12:17:25 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/01/23 11:04:13 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/01/23 12:22:03 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #define HARLFILTER_HPP
 
 #include <iostream>
-#include <map>
 
 class Harl
 {
