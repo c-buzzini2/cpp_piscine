@@ -1,38 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Harl.cpp                                           :+:      :+:    :+:   */
+/*   HarlFilter.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbuzzini <cbuzzini@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 14:44:02 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/01/23 11:34:33 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/01/23 11:37:20 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Harl.hpp"
+#include "HarlFilter.hpp"
 
 void    Harl::complain(std::string level)
-{
-	if (level.empty())
+{	
+    std::map<std::string, int> level_nb;
+
+    level_nb["DEBUG"] = 1;
+    level_nb["INFO"] = 2;
+    level_nb["WARNING"] = 3;
+    level_nb["ERROR"] = 4;
+
+	std::map<std::string, int>::iterator it = level_nb.find(level);
+    if (it != level_nb.end())
 	{
-		std::cerr << "Please, enter a level\n";
-		return;
-	}
-	
-    std::map<std::string, void(Harl::*)(void)> funcMap;
-
-    funcMap["DEBUG"] = &Harl::debug;
-    funcMap["INFO"] = &Harl::info;
-    funcMap["WARNING"] = &Harl::warning;
-    funcMap["ERROR"] = &Harl::error;
-
-    std::map<std::string, void(Harl::*)(void)>::iterator it = funcMap.find(level);
-    if (it != funcMap.end()) 
-        (this->*(it->second))();
+        int nb = it->second;
+        switch (nb)
+        {
+            case 1:
+                this->debug();
+                //fall through
+            case 2:
+                this->info();
+                //fall through
+            case 3:
+                this->warning();
+                //fall through
+            case 4:
+                this->error();
+                //fall through
+        }
+    }
     else
-        std::cerr << "Level does not exist\n";
- 
+		std::cout << "[ Probably complaining about insignificant problems ]" 
+					<< std::endl; 
 }
 
 void    Harl::debug(void)
