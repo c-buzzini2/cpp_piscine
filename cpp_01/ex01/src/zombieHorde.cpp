@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ZombieHorde.cpp                                    :+:      :+:    :+:   */
+/*   zombieHorde.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbuzzini <cbuzzini@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: cbuzzini <cbuzzini@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 15:19:02 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/01/16 15:21:40 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/01/24 11:18:35 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,17 @@
 
 Zombie* zombieHorde(int N, std::string name)
 {
-    Zombie  *zb = new Zombie[N];
+    if (N <= 0 || N > 10000)
+    {
+        std::cerr << "Invalid number\n";
+        return (NULL);
+    }
+    Zombie  *zb = new (std::nothrow) Zombie[N];
+    if (!zb)
+    {
+        std::cerr << "Allocation error\n";
+        return (NULL);
+    }
     
     for(int i = 0; i < N; i++)
         zb[i].SetName(name);

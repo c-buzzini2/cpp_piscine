@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbuzzini <cbuzzini@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: cbuzzini <cbuzzini@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 15:17:34 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/01/16 15:49:32 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/01/24 11:18:28 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "Zombie.h"
 
-//START HERE!!! CHECK FOR LEAKS with valgrind
-
 int main(void)
 {	
-	int N = 10;
-	Zombie *zb = zombieHorde(N, "Greta");
-	for(int i = 0; i < N; i++)
+	int n = 10000;
+	Zombie *zb = zombieHorde(n, "Greta");
+	if (!zb)
+		return (1);
+	for(int i = 0; i < n; i++)
 		zb[i].announce();
 	delete[] zb;
 }
