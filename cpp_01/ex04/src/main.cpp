@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbuzzini <cbuzzini@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: cbuzzini <cbuzzini@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 10:57:58 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/01/22 11:28:43 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/01/24 16:21:20 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ int main(int argc, char **argv)
 {
 	if (argc != 4 || argv[2][0] == '\0')
 	{
-		std::cerr << "Program needs three parameters in this order: filename,"
-					<< "non-empty string to be replaced and replacing string";
+		std::cerr << "Program needs three parameters in this order: filename, "
+					<< "non-empty string to be replaced and replacing string\n";
 		return (1);
 	}
 	

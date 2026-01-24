@@ -47,7 +47,7 @@ $PROGRAM -10 Greta
 echo ""
 
 # Test 6
-echo "Test 6: 100"
+echo "Test 6: 100 OK"
 $PROGRAM 100 Greta
 echo ""
 
