@@ -6,7 +6,7 @@
 /*   By: cbuzzini <cbuzzini@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 15:19:02 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/01/24 11:18:35 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/01/24 12:05:15 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ Zombie* zombieHorde(int N, std::string name)
         std::cerr << "Invalid number\n";
         return (NULL);
     }
+    if (name == "")
+        name = "[nameless]";
     Zombie  *zb = new (std::nothrow) Zombie[N];
     if (!zb)
     {

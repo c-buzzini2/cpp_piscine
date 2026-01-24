@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cbuzzini <cbuzzini@student.42lisboa.com    +#+  +:+       +#+         #
+#    By: cbuzzini <cbuzzini@student.42berlin.de>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/24 12:59:11 by cbuzzini          #+#    #+#              #
-#    Updated: 2026/01/16 15:41:53 by cbuzzini         ###   ########.fr        #
+#    Updated: 2026/01/24 15:24:00 by cbuzzini         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ INCLUDE_DIR = includes/
 
 SRC_FILES = main.cpp \
 			Zombie.cpp \
-			zombieHorde.cpp
+			zombieHorde.cpp \
+			test_utils.cpp
 			
 SRC = $(addprefix $(SRC_DIR), $(SRC_FILES))
 OBJ_FILES = $(addprefix $(OBJ_DIR), $(SRC_FILES:.cpp=.o))
