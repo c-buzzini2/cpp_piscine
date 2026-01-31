@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbuzzini <cbuzzini@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: cbuzzini <cbuzzini@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 15:30:31 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/01/30 13:34:52 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/01/31 14:59:06 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ Fixed::Fixed(int const nb)
 Fixed::Fixed(float const nb)
 {
 	std::cout << "Float constructor called\n";
-	_RawBits = static_cast<int>(std::roundf(nb * (1 << _Fractional_Bits)));
+	_RawBits = static_cast<int>(roundf(nb * (1 << _Fractional_Bits)));
 }
 
 Fixed::Fixed(Fixed const &src)
@@ -69,8 +69,8 @@ float Fixed::toFloat(void) const
 	return (static_cast<float>(this->_RawBits) / (1 << this->_Fractional_Bits));
 }
 
-Fixed::Fixed(float const nb)
+std::ostream &	operator<<(std::ostream &o, Fixed const & src)
 {
-	std::cout << "Float constructor called\n";
-	_RawBits = static_cast<int>(std::roundf(nb * (1 << _Fractional_Bits)));
+	o << src.toFloat();
+	return (o);
 }
