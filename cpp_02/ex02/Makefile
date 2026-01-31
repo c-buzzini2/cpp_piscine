@@ -6,7 +6,7 @@
 #    By: cbuzzini <cbuzzini@student.42berlin.de>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/24 12:59:11 by cbuzzini          #+#    #+#              #
-#    Updated: 2026/01/31 20:25:27 by cbuzzini         ###   ########.fr        #
+#    Updated: 2026/01/31 19:51:12 by cbuzzini         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,16 +15,15 @@ OBJ_DIR = obj/
 INCLUDE_DIR = includes/
 
 SRC_FILES = main.cpp \
-			Zombie.cpp \
-			NewZombie.cpp \
-			RandomChump.cpp
+			Fixed.cpp \
+			oper_overloads.cpp
 			
 SRC = $(addprefix $(SRC_DIR), $(SRC_FILES))
 OBJ_FILES = $(addprefix $(OBJ_DIR), $(SRC_FILES:.cpp=.o))
 
 CXX = c++ 
 FLAGS = -g -Wall -Wextra -Werror -std=c++98
-NAME = zombie
+NAME = Fixed
 
 all: $(NAME)
 

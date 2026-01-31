@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbuzzini <cbuzzini@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: cbuzzini <cbuzzini@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 15:06:44 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/01/15 15:42:42 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/01/31 20:27:55 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,12 @@ void Zombie::SetName(std::string name)
 	this->name = name;
 }
 
-
 Zombie::~Zombie(void)
 {
 	std::cout << this->name << " destructed" << std::endl;
+}
+
+Zombie::Zombie(void)
+{
+	
 }
