@@ -6,7 +6,7 @@
 /*   By: cbuzzini <cbuzzini@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 10:57:58 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/01/24 16:21:20 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/02/03 20:20:46 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,24 @@ void	ft_search_and_replace(char **argv, std::ifstream& src, std::ofstream& dest)
 
 	while (std::getline(src, line))
 	{
-		std::string::size_type pos = line.find(argv[2]);
-		if (pos == std::string::npos)
-			line_post = line;
-		else
+		while (line.length() > 0)
 		{
-			line_post.assign(line, 0, pos);
-			line_post.append(argv[3]);
-			line_post.append(line, pos + len_s1);
+			std::string::size_type pos = line.find(argv[2]);
+			if (pos == std::string::npos)
+			{
+				line_post.append(line);
+				break;
+			}
+			else
+			{
+				line_post.append(line, 0, pos);
+				line_post.append(argv[3]);
+				line = line.substr(pos + len_s1);
+			}
 		}
 		dest << line_post;
 		dest << std::endl;
+		line_post.clear();
 	}
 }
 
