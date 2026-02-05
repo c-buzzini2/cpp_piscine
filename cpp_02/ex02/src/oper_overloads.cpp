@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   oper_overloads.cpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbuzzini <cbuzzini@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: cbuzzini <cbuzzini@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/31 18:27:47 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/01/31 20:21:01 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/02/04 12:19:07 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,29 +57,33 @@ bool Fixed::operator!=(Fixed const & other) const
 
 Fixed Fixed::operator+(Fixed const & other) const
 {
-	Fixed	temp(this->_RawBits + other._RawBits);
+	Fixed	temp;
 	
+	temp.setRawBits(this->_RawBits + other._RawBits);
 	return (temp);
 }
 
 Fixed Fixed::operator-(Fixed const & other) const
 {
-	Fixed	temp(this->_RawBits - other._RawBits);
+	Fixed	temp;
 	
+	temp.setRawBits(this->_RawBits - other._RawBits);
 	return (temp);
 }
 
 Fixed Fixed::operator*(Fixed const & other) const
 {
-	Fixed	temp(this->_RawBits * other._RawBits);
+	Fixed	temp;
 	
+	temp.setRawBits((this->_RawBits * other._RawBits) >> temp._Fractional_Bits);
 	return (temp);
 }
 
 Fixed Fixed::operator/(Fixed const & other) const
 {
-	Fixed	temp(this->_RawBits / other._RawBits);
+	Fixed	temp;
 	
+	temp.setRawBits((this->_RawBits << temp._Fractional_Bits) / other._RawBits);
 	return (temp);
 }
 
