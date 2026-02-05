@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbuzzini <cbuzzini@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: cbuzzini <cbuzzini@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 15:30:31 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/01/31 18:28:22 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/02/05 12:05:00 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,3 +61,29 @@ float Fixed::toFloat(void) const
 {
 	return (static_cast<float>(this->_RawBits) / (1 << this->_Fractional_Bits));
 }
+
+Fixed & Fixed::min (Fixed & first, Fixed & second)
+{
+	if (first < second)
+		return (first);
+	return (second);
+}
+const Fixed & Fixed::min (const Fixed & first, const Fixed & second)
+{
+	if (first < second)
+		return (first);
+	return (second);
+}
+Fixed & Fixed::max (Fixed & first, Fixed & second)
+{
+	if (first > second)
+		return (first);
+	return (second);
+}
+const Fixed & Fixed::max (const Fixed & first, const Fixed & second)
+{
+	if (first > second)
+		return (first);
+	return (second);
+}
+

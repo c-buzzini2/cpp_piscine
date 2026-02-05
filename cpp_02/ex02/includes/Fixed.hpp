@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbuzzini <cbuzzini@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: cbuzzini <cbuzzini@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 15:06:14 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/01/31 20:14:31 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/02/05 12:00:02 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,17 @@ class Fixed
 	float	toFloat( void ) const;
 	int		toInt( void ) const;
 	
+	static Fixed & 			min (Fixed & first, Fixed & second);
+	static const Fixed &	min (const Fixed & first, const Fixed & second);
+	static Fixed & 			max (Fixed & first, Fixed & second);
+	static const Fixed & 	max (const Fixed & first, const Fixed & second);
+
+	
 	private:
 	
-	int 				_RawBits;
-	static const int	_Fractional_Bits = 8;
+	int 					_RawBits;
+	static const int		_Fractional_Bits = 8;
+
 };
 
 std::ostream &	operator<<(std::ostream &o, Fixed const & src);
