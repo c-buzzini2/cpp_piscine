@@ -6,27 +6,27 @@
 /*   By: cbuzzini <cbuzzini@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 12:13:42 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/02/10 10:14:05 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/02/10 10:24:58 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 int main (void)
 {
-    ScavTrap a;
-    ScavTrap b("John");
-    ScavTrap c (b);
-    ScavTrap d;
+    FragTrap a;
+    FragTrap b("John");
+    FragTrap c (b);
+    FragTrap d;
     
     d = b;
 
-    ScavTrap e("James");
-    e.guardGate();
+    FragTrap e("James");
+    e.highFivesGuys();
     e.attack("Peter");//dummy
     e.takeDamage(9);
     e.beRepaired(9);
-    for (int i = 0; i < 50; i++)
+    for (int i = 0; i < 100; i++)
     {
         e.attack("Peter");
     }

@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbuzzini <cbuzzini@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/08 12:13:42 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/02/10 10:14:05 by cbuzzini         ###   ########.fr       */
+/*   Created: 2026/02/09 11:15:05 by cbuzzini          #+#    #+#             */
+/*   Updated: 2026/02/10 10:19:59 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#ifndef FRAGTRAP_HPP
+#define FRAGTRAP_HPP
 
-int main (void)
+# include <iostream>
+# include "ClapTrap.hpp"
+
+class FragTrap: public ClapTrap
 {
-    ScavTrap a;
-    ScavTrap b("John");
-    ScavTrap c (b);
-    ScavTrap d;
-    
-    d = b;
+        public:
+        
+        FragTrap(void);
+        FragTrap(FragTrap const &src);
+        FragTrap(std::string name);
+        ~FragTrap(void);
 
-    ScavTrap e("James");
-    e.guardGate();
-    e.attack("Peter");//dummy
-    e.takeDamage(9);
-    e.beRepaired(9);
-    for (int i = 0; i < 50; i++)
-    {
-        e.attack("Peter");
-    }
-    e.takeDamage(100);
-}
+        FragTrap & operator=(FragTrap const &src);
+        
+        void highFivesGuys();
+};
+
+#endif
