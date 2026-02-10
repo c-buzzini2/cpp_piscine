@@ -6,7 +6,7 @@
 /*   By: cbuzzini <cbuzzini@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 11:42:51 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/02/08 12:31:34 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/02/10 10:05:45 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ class ClapTrap
     
     private:
       
-        std::string name;
-        int         hit_pts;
-        int         energy_pts;
-        int         attack_dmg;
+        std::string _name;
+        int         _hit_pts;
+        int         _energy_pts;
+        int         _attack_dmg;
 };
 
 #endif
