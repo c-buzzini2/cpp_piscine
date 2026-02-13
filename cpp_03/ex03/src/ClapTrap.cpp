@@ -6,7 +6,7 @@
 /*   By: cbuzzini <cbuzzini@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 11:52:13 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/02/08 13:33:37 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/02/13 18:30:40 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 ClapTrap::ClapTrap(void) : name("Unnamed"), hit_pts(10), energy_pts(10), attack_dmg(0)
 {
-    std::cout << this->name << " created\n";
+    std::cout << this->name << " created (default)\n";
 }
 
 ClapTrap::ClapTrap(std::string name) : name(name), hit_pts(10), energy_pts(10), attack_dmg(0)

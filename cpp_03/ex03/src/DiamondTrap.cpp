@@ -12,24 +12,20 @@
 
 #include "DiamondTrap.hpp"
 
-//START WITH THESE TWO FUNCTIONS. WHY ARE ALL VALUES TAKEN OVER FROM FRAGTRAP?
-DiamondTrap::DiamondTrap(void)
+DiamondTrap::DiamondTrap(void) : ClapTrap("Unnamed_clap_trap"), name("Unnamed")
 {
-    std::cout << "DiamondTrap " << this->name << " created:\n"
-                << "hit_pts: " << this->hit_pts << std::endl
-                 << "en_pts: " << this->energy_pts << std::endl
-                  << "attack_dmg: " << this->attack_dmg << std::endl;
+    this->hit_pts = 100;
+    this->energy_pts = 50;
+    this->attack_dmg = 30;
+    std::cout << "DiamondTrap " << this->name << " created (default)\n";
 }
 
 DiamondTrap::DiamondTrap(std::string name): ClapTrap(name + "_clap_name"), ScavTrap(name), FragTrap(name), name(name)
 {
-    // this->hit_pts = 100;
-    // this->energy_pts = 100;
-    // this->attack_dmg = 30;
-    std::cout << "DiamondTrap " << this->name << " created:\n"
-                << "hit_pts: " << this->hit_pts << std::endl
-                 << "en_pts: " << this->energy_pts << std::endl
-                  << "attack_dmg: " << this->attack_dmg << std::endl;
+    this->hit_pts = 100;
+    this->energy_pts = 50;
+    this->attack_dmg = 30;
+    std::cout << "DiamondTrap " << this->name << " created\n";
 }
 
 DiamondTrap & DiamondTrap::operator=(DiamondTrap const &src)
@@ -59,6 +55,6 @@ DiamondTrap::~DiamondTrap(void)
 
 void DiamondTrap::whoAmI(void)
 {
-    std::cout << "DiamondTrap: my name is " << this->name << " high-fives guys\n";
+    std::cout << "DiamondTrap: my name is " << this->name << ", my claptrap name is " << this->ClapTrap::name << std::endl;
 }
 

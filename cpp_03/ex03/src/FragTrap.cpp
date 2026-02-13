@@ -6,7 +6,7 @@
 /*   By: cbuzzini <cbuzzini@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 11:52:13 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/02/10 12:03:32 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/02/13 18:30:50 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ FragTrap::FragTrap(void)
     this->hit_pts = 100;
     this->energy_pts = 100;
     this->attack_dmg = 30;
-    std::cout << "FragTrap " << this->name << " created\n";
+    std::cout << "FragTrap " << this->name << " created (default)\n";
 }
 
 FragTrap::FragTrap(std::string name) : ClapTrap(name)

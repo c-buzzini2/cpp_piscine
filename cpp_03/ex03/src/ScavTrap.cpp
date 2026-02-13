@@ -6,7 +6,7 @@
 /*   By: cbuzzini <cbuzzini@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 11:52:13 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/02/10 12:05:30 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/02/13 18:34:50 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ ScavTrap::ScavTrap(void)
     this->hit_pts = 100;
     this->energy_pts = 50;
     this->attack_dmg = 20;
-    std::cout << "ScavTrap " << this->name << " created\n";
+    std::cout << "ScavTrap " << this->name << " created (default)\n";
 }
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
@@ -57,14 +57,14 @@ void ScavTrap::attack(const std::string& target)
 {
     if (this->hit_pts == 0 || this->energy_pts == 0)
     {
-        std::cout << "ScavTrap " << this->name << " doesn't have enough hit points" 
+        std::cout << "ScavTrap attack: " << this->name << " doesn't have enough hit points" 
                     << " or energy points to attack\n";
         return;
     }
-    std::cout << "ScavTrap " << this->name << " attacks " << target 
+    std::cout << "ScavTrap attack: " << this->name << " attacks " << target 
                 << ", causing " << attack_dmg << " points of damage\n";
     this->energy_pts--;
-    std::cout << "ScavTrap " << this->name << " now has " << this->energy_pts << " energy points\n";
+    std::cout << "ScavTrap attack: " << this->name << " now has " << this->energy_pts << " energy points\n";
     //later, call target's take damage passing attack_dmg as parameter -> not part of these exercises
 }
 
