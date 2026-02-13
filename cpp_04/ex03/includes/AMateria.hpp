@@ -1,39 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
+/*   AMateria.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbuzzini <cbuzzini@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 11:42:51 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/02/13 21:54:04 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/02/13 21:37:05 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DIAMONDTRAP_HPP
-#define DIAMONDTRAP_HPP
+#ifndef AMATERIA_HPP
+#define AMATERIA_HPP
 
 # include <iostream>
-# include "ScavTrap.hpp"
-# include "FragTrap.hpp"
 
-class DiamondTrap : public ScavTrap, public FragTrap
+class AMateria
 {
     public:
         
-        DiamondTrap(void);
-        DiamondTrap(DiamondTrap const &src);
-        DiamondTrap(std::string name);
-        ~DiamondTrap(void);
+        AMateria(void);
+        AMateria(AMateria const &src);
+        AMateria(std::string const & type);
+        virtual ~AMateria(void);
+        AMateria & operator=(AMateria const &src);
 
-        DiamondTrap & operator=(DiamondTrap const &src);
-
-        using ScavTrap::attack;
-        void whoAmI();
+        virtual void        use(ICharacter& target);
+        virtual AMateria*   clone() const = 0;
+        std::string const & getType() const;
     
-    private:
+    protected:
       
-        std::string name;
+        std::string type;
 };
 
 #endif
