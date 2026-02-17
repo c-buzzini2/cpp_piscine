@@ -20,6 +20,7 @@ Dog::Dog(void)
 
 Dog & Dog::operator=(Dog const &src)
 {
+    Animal::operator=(src);
     this->type = src.type;    
     std::cout << this->type << " assigned\n";
     return(*this);

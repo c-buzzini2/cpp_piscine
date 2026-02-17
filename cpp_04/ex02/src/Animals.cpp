@@ -14,24 +14,24 @@
 
 Animal::Animal(void) : type("Animal")
 {
-    std::cout << this->type << " created (default)\n";
+    std::cout << "Animal of type " << this->type << " created (default)\n";
 }
 
 Animal & Animal::operator=(Animal const &src)
 {
     this->type = src.type;    
-    std::cout << this->type << " assigned\n";
+    std::cout << "Animal of type " << this->type << " assigned\n";
     return(*this);
 }
 
 Animal::Animal(Animal const &src) : type(src.type)
 {
-    std::cout << this->type << "'s copy created\n";
+    std::cout << "Animal of type " << this->type << "'s copy created\n";
 }
 
 Animal::~Animal(void)
 {
-    std::cout << this->type << " destructed\n";
+    std::cout << "Animal of type " << this->type << " destructed\n";
 }
 
 std::string Animal::getType() const

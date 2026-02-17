@@ -6,7 +6,7 @@
 /*   By: cbuzzini <cbuzzini@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 11:52:13 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/02/12 09:09:27 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/02/17 14:00:34 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ WrongCat::WrongCat(void)
 
 WrongCat & WrongCat::operator=(WrongCat const &src)
 {
+    WrongAnimal::operator=(src);
     this->type = src.type;    
     std::cout << this->type << " assigned\n";
     return(*this);

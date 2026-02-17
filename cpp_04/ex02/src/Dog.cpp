@@ -21,6 +21,7 @@ Dog::Dog(void)
 
 Dog & Dog::operator=(Dog const &src)
 {
+    Animal::operator=(src);
     this->type = src.type;
     delete(this->brn);
     this->brn = new Brain(*src.brn);

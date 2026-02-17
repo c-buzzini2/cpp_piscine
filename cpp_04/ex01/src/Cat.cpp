@@ -21,6 +21,7 @@ Cat::Cat(void)
 
 Cat & Cat::operator=(Cat const &src)
 {
+    Animal::operator=(src);
     this->type = src.type;
     delete(this->brn);
     this->brn = new Brain(*src.brn);

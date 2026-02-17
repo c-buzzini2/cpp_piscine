@@ -20,6 +20,7 @@ Cat::Cat(void)
 
 Cat & Cat::operator=(Cat const &src)
 {
+    Animal::operator=(src);
     this->type = src.type;    
     std::cout << this->type << " assigned\n";
     return(*this);

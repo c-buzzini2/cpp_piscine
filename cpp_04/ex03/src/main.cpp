@@ -6,7 +6,7 @@
 /*   By: cbuzzini <cbuzzini@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 12:13:42 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/02/17 13:03:25 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/02/17 14:09:24 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@
     return (0);
 } */
 
-//!!!! Go back in the module and correct operator= of derived class
-
 int main (void)
 {
     {
@@ -45,6 +43,7 @@ int main (void)
         AMateria* temp3;
 
         temp3 = temp1;//copies address only
+        std::cout << temp3->getType() << std::endl;
         delete (temp1);
         delete (temp2);
     }
@@ -54,6 +53,8 @@ int main (void)
         Ice temp6;
 
         temp6 = temp4;
+        std::cout << temp6.getType() << std::endl;
+
     }
     {
         AMateria* temp1 = new Cure();
@@ -61,6 +62,7 @@ int main (void)
         AMateria* temp3;
 
         temp3 = temp1;//copies address only
+        std::cout << temp3->getType() << std::endl;
         delete (temp1);
         delete (temp2);
     }
@@ -70,6 +72,9 @@ int main (void)
         Cure temp6;
 
         temp6 = temp4;
+
+        std::cout << temp6.getType() << std::endl;
+
     }
 
     return (0);
