@@ -6,7 +6,7 @@
 /*   By: cbuzzini <cbuzzini@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 11:42:51 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/02/18 11:03:43 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/02/18 14:13:16 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ class Character : public ICharacter
         void        _init_arr(AMateria **arr);
         void        _free_arr(AMateria **arr, int size);
         void        _copy_arr(AMateria **dest, AMateria **src, int size);
+        void        _deep_copy_arr(AMateria **dest, AMateria **src, int size);
         void        _send_to_floor(AMateria *m);
     
     public:

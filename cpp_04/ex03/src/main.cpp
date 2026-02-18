@@ -6,7 +6,7 @@
 /*   By: cbuzzini <cbuzzini@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 12:13:42 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/02/18 12:00:22 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/02/18 14:22:17 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,48 +17,79 @@
 
 int main (void)
 { 
-    //IMateriaSource* src = new MateriaSource();
-    //src->learnMateria(new Ice());
-    //src->learnMateria(new Cure());
-    ICharacter* me = new Character("me");
+    {
+        //IMateriaSource* src = new MateriaSource();
+        //src->learnMateria(new Ice());
+        //src->learnMateria(new Cure());
+        ICharacter* me = new Character("me");
+        AMateria* tmp = new Ice;
+        //tmp = src->createMateria("ice");
+        me->equip(tmp);
+        AMateria* tmp2 = new Cure;
+        me->equip(tmp2);
+
+        AMateria* tmp3 = new Ice;
+        me->equip(tmp3);
+
+        AMateria* tmp4 = new Cure;
+        me->equip(tmp4);
+
+        AMateria* tmp5 = new Ice;
+        me->equip(tmp5);
+
+
+
+        //tmp = src->createMateria("cure");
+        //me->equip(tmp);
+        ICharacter* bob = new Character("bob");
+        me->use(0, *bob);
+        me->use(1, *bob);
+        me->use(3, *bob);
+        me->unequip(3);
+        me->use(3, *bob);
+        me->equip(tmp5);
+        me->use(3, *bob);
+        me->unequip(2);
+        me->unequip(2);
+        me->unequip(3);
+        delete bob;
+        delete me;
+        //delete src;
+    }
+
+    Character me("me");
     AMateria* tmp = new Ice;
-    //tmp = src->createMateria("ice");
-    me->equip(tmp);
+    me.equip(tmp);
     AMateria* tmp2 = new Cure;
-    me->equip(tmp2);
+    me.equip(tmp2);
 
     AMateria* tmp3 = new Ice;
-    me->equip(tmp3);
+    me.equip(tmp3);
 
     AMateria* tmp4 = new Cure;
-    me->equip(tmp4);
+    me.equip(tmp4);
 
     AMateria* tmp5 = new Ice;
-    me->equip(tmp5);
+    me.equip(tmp5);
 
+    Character bob;
+  
+    me.unequip(3);
+    me.use(3, bob);
+    me.equip(tmp5);
+    me.use(3, bob);
+    me.unequip(2);
+    me.unequip(2);
+    me.unequip(3);
 
+    bob = me;
+    bob.use(3, bob);
+    bob.use(0, bob);
 
-    //tmp = src->createMateria("cure");
-    //me->equip(tmp);
-    ICharacter* bob = new Character("bob");
-    me->use(0, *bob);
-    me->use(1, *bob);
-    me->use(3, *bob);
-    me->unequip(3);
-    me->use(3, *bob);
-    me->equip(tmp5);
-    me->use(3, *bob);
-    me->unequip(2);
-    me->unequip(2);
-    me->unequip(3);
+    Character dan(me);
+    bob.use(3, bob);
+    bob.use(0, bob);
 
-    ICharacter* dan = new Character("dan");
-    dan = bob;
-
-    delete dan;
-    delete bob;
-    delete me;
-    //delete src;
     return (0);
 }
 
