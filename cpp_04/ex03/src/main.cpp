@@ -6,7 +6,7 @@
 /*   By: cbuzzini <cbuzzini@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 12:13:42 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/02/18 08:44:32 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/02/18 12:00:22 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,54 @@
 #include "Character.hpp"
 //#include "MateriaSource.hpp"
 
-/* int main (void)
+int main (void)
 { 
-    IMateriaSource* src = new MateriaSource();
-    src->learnMateria(new Ice());
-    src->learnMateria(new Cure());
+    //IMateriaSource* src = new MateriaSource();
+    //src->learnMateria(new Ice());
+    //src->learnMateria(new Cure());
     ICharacter* me = new Character("me");
-    AMateria* tmp;
-    tmp = src->createMateria("ice");
+    AMateria* tmp = new Ice;
+    //tmp = src->createMateria("ice");
     me->equip(tmp);
-    tmp = src->createMateria("cure");
-    me->equip(tmp);
+    AMateria* tmp2 = new Cure;
+    me->equip(tmp2);
+
+    AMateria* tmp3 = new Ice;
+    me->equip(tmp3);
+
+    AMateria* tmp4 = new Cure;
+    me->equip(tmp4);
+
+    AMateria* tmp5 = new Ice;
+    me->equip(tmp5);
+
+
+
+    //tmp = src->createMateria("cure");
+    //me->equip(tmp);
     ICharacter* bob = new Character("bob");
     me->use(0, *bob);
     me->use(1, *bob);
+    me->use(3, *bob);
+    me->unequip(3);
+    me->use(3, *bob);
+    me->equip(tmp5);
+    me->use(3, *bob);
+    me->unequip(2);
+    me->unequip(2);
+    me->unequip(3);
+
+    ICharacter* dan = new Character("dan");
+    dan = bob;
+
+    delete dan;
     delete bob;
     delete me;
-    delete src;
+    //delete src;
     return (0);
-} */
+}
 
+/* 
 int main (void)
 {
     {
@@ -92,3 +120,4 @@ int main (void)
 
     return (0);
 }
+ */

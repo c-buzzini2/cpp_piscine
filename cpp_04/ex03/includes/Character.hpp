@@ -6,7 +6,7 @@
 /*   By: cbuzzini <cbuzzini@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 11:42:51 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/02/18 08:29:07 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/02/18 11:03:43 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,12 @@ class Character : public ICharacter
 		std::string _name;
         AMateria*   _inventory[4];
         int         _mat_total;
+        int         _floor_total;
+        AMateria**   _floor_mat;
         void        _init_arr(AMateria **arr);
-        void        _free_arr(AMateria **arr);
+        void        _free_arr(AMateria **arr, int size);
+        void        _copy_arr(AMateria **dest, AMateria **src, int size);
+        void        _send_to_floor(AMateria *m);
     
     public:
       
