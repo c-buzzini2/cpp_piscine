@@ -6,7 +6,7 @@
 /*   By: cbuzzini <cbuzzini@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 11:52:13 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/02/17 12:50:32 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/02/18 08:40:05 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,10 @@ std::string const & AMateria::getType() const
 {
     return (this->type);
 }
+
+void AMateria::use(ICharacter& target)
+{
+    (void)target;
+}
+
 

@@ -6,11 +6,12 @@
 /*   By: cbuzzini <cbuzzini@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 11:52:13 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/02/17 11:47:55 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/02/18 08:39:56 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Character.hpp"
+#include "AMateria.hpp"
 
 void Character::_free_arr(AMateria **arr)
 {
@@ -68,7 +69,21 @@ std::string const & Character::getName() const
     return (this->_name);
 }
 
-void use(int idx, ICharacter& target)
+//START HERE!!!! IMPLEMENT FUNCTIONS AND START TESTING, 
+//GO BACK TO ICE AND CURE TO IMPLEMENT USE PROPERLY
+//THEN CHECK IF/HOW I CAN ALLOCATE ABOVE
+//FINALLY, MATERIASOURCE
+
+void Character::use(int idx, ICharacter& target)
+{
+    
+}
+
+void Character::equip(AMateria* m)
+{
+    
+}
+void Character::unequip(int idx)
 {
     
 }

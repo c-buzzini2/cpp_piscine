@@ -6,14 +6,16 @@
 /*   By: cbuzzini <cbuzzini@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 11:42:51 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/02/16 13:19:00 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/02/18 08:33:04 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ICharacter_HPP
 #define ICharacter_HPP
 
-# include "AMateria.hpp"
+# include <iostream>
+
+class AMateria;
 
 class ICharacter
 { 

@@ -6,13 +6,13 @@
 /*   By: cbuzzini <cbuzzini@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 12:13:42 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/02/17 14:09:24 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/02/18 08:44:32 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Ice.hpp"
 #include "Cure.hpp"
-//#include "Character.hpp"
+#include "Character.hpp"
 //#include "MateriaSource.hpp"
 
 /* int main (void)
@@ -39,42 +39,55 @@ int main (void)
 {
     {
         AMateria* temp1 = new Ice();
-        AMateria* temp2 = temp1->clone(); //this test cannot use Werror
+        AMateria* temp2 = temp1->clone();
         AMateria* temp3;
+        ICharacter* chtr = new Character("Bob");
 
         temp3 = temp1;//copies address only
         std::cout << temp3->getType() << std::endl;
+        temp3->use(*chtr);
         delete (temp1);
         delete (temp2);
+        delete (chtr);
     }
     {
         Ice temp4;
         Ice temp5(temp4);
         Ice temp6;
+        ICharacter* chtr = new Character("Bob");
 
         temp6 = temp4;
         std::cout << temp6.getType() << std::endl;
+        temp6.use(*chtr);
 
+        delete(chtr);
     }
     {
         AMateria* temp1 = new Cure();
-        AMateria* temp2 = temp1->clone(); //this test cannot use Werror
+        AMateria* temp2 = temp1->clone();
         AMateria* temp3;
+        ICharacter* chtr = new Character("Bob");
 
         temp3 = temp1;//copies address only
         std::cout << temp3->getType() << std::endl;
+        temp3->use(*chtr);
         delete (temp1);
         delete (temp2);
+        delete (chtr);
+
     }
     {
         Cure temp4;
         Cure temp5(temp4);
         Cure temp6;
+        ICharacter* chtr = new Character("Bob");
 
         temp6 = temp4;
 
         std::cout << temp6.getType() << std::endl;
+        temp6.use(*chtr);
 
+        delete(chtr);
     }
 
     return (0);

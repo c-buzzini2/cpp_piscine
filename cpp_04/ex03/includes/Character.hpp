@@ -6,7 +6,7 @@
 /*   By: cbuzzini <cbuzzini@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 11:42:51 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/02/16 12:54:38 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/02/18 08:29:07 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ class Character : public ICharacter
         virtual std::string const & getName() const;
         virtual void equip(AMateria* m);
         virtual void unequip(int idx);
-        virtual void use(int idx, Character& target);
+        virtual void use(int idx, ICharacter& target);
 };
 
 #endif

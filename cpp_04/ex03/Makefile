@@ -6,7 +6,7 @@
 #    By: cbuzzini <cbuzzini@student.42berlin.de>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/24 12:59:11 by cbuzzini          #+#    #+#              #
-#    Updated: 2026/02/17 13:05:13 by cbuzzini         ###   ########.fr        #
+#    Updated: 2026/02/18 08:44:55 by cbuzzini         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ INCLUDE_DIR = includes/
 SRC_FILES = main.cpp \
 			AMateria.cpp \
 			Cure.cpp \
-			Ice.cpp
+			Ice.cpp \
+			Character.cpp
 			
 SRC = $(addprefix $(SRC_DIR), $(SRC_FILES))
 OBJ_FILES = $(addprefix $(OBJ_DIR), $(SRC_FILES:.cpp=.o))
