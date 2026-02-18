@@ -6,7 +6,7 @@
 #    By: cbuzzini <cbuzzini@student.42berlin.de>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/24 12:59:11 by cbuzzini          #+#    #+#              #
-#    Updated: 2026/02/18 14:36:38 by cbuzzini         ###   ########.fr        #
+#    Updated: 2026/02/18 15:11:53 by cbuzzini         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ SRC_FILES = main.cpp \
 			Ice.cpp \
 			Character.cpp \
 			Character_canonical.cpp \
-			Character_utils.cpp
+			Character_utils.cpp \
+			MateriaSource.cpp
 			
 SRC = $(addprefix $(SRC_DIR), $(SRC_FILES))
 OBJ_FILES = $(addprefix $(OBJ_DIR), $(SRC_FILES:.cpp=.o))

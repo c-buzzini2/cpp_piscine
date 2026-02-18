@@ -6,24 +6,40 @@
 /*   By: cbuzzini <cbuzzini@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 12:13:42 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/02/18 14:22:17 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/02/18 15:07:26 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Ice.hpp"
 #include "Cure.hpp"
 #include "Character.hpp"
-//#include "MateriaSource.hpp"
+#include "MateriaSource.hpp"
 
-int main (void)
+int main() //original
+{
+    IMateriaSource* src = new MateriaSource();
+    src->learnMateria(new Ice());
+    src->learnMateria(new Cure());
+    ICharacter* me = new Character("me");
+    AMateria* tmp;
+    tmp = src->createMateria("ice");
+    me->equip(tmp);
+    tmp = src->createMateria("cure");
+    me->equip(tmp);
+    ICharacter* bob = new Character("bob");
+    me->use(0, *bob);
+    me->use(1, *bob);
+    delete bob;
+    delete me;
+    delete src;
+    return 0;
+}
+
+/* int main (void) //tests character
 { 
     {
-        //IMateriaSource* src = new MateriaSource();
-        //src->learnMateria(new Ice());
-        //src->learnMateria(new Cure());
         ICharacter* me = new Character("me");
         AMateria* tmp = new Ice;
-        //tmp = src->createMateria("ice");
         me->equip(tmp);
         AMateria* tmp2 = new Cure;
         me->equip(tmp2);
@@ -37,10 +53,6 @@ int main (void)
         AMateria* tmp5 = new Ice;
         me->equip(tmp5);
 
-
-
-        //tmp = src->createMateria("cure");
-        //me->equip(tmp);
         ICharacter* bob = new Character("bob");
         me->use(0, *bob);
         me->use(1, *bob);
@@ -54,7 +66,6 @@ int main (void)
         me->unequip(3);
         delete bob;
         delete me;
-        //delete src;
     }
 
     Character me("me");
@@ -91,10 +102,10 @@ int main (void)
     bob.use(0, bob);
 
     return (0);
-}
+} */
 
 /* 
-int main (void)
+int main (void) // tests constructors and destructors of materia, ice, cure
 {
     {
         AMateria* temp1 = new Ice();
