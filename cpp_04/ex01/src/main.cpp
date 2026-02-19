@@ -6,7 +6,7 @@
 /*   By: cbuzzini <cbuzzini@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 12:13:42 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/02/12 12:47:11 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/02/19 08:25:11 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,14 @@ int main (void)
     {
         int N = 20;
         Animal **animals_arr = new Animal*[N];
-        for (int i = 0; i < N/2; i++)
+        for (int i = 0; i < N; i++)
         {
             if (i % 2 == 0)
                 animals_arr[i] = new Dog;
             else
                 animals_arr[i] = new Cat;  
         }
-        for (int i = 0; i < N/2; i++)
+        for (int i = 0; i < N; i++)
         {
             delete(animals_arr[i]);
         }
