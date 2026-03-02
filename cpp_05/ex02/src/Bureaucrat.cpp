@@ -6,12 +6,12 @@
 /*   By: cbuzzini <cbuzzini@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 11:08:38 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/03/02 15:03:55 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/03/02 14:47:52 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
 const char* Bureaucrat::GradeTooHighException::what(void) const throw()
 {
@@ -85,7 +85,7 @@ void Bureaucrat::decrementGrade(void)
         throw (GradeTooLowException());
 }
 
-void Bureaucrat::signForm(Form &form)
+void Bureaucrat::signForm(AForm &form)
 {
 	try
 	{
