@@ -22,6 +22,11 @@ const char* AForm::GradeTooLowException::what(void) const throw()
     return ("Grade too low");
 }
 
+const char* AForm::FormNotSigned::what(void) const throw()
+{
+    return ("Unsigned forms cannot be executed");
+}
+
 AForm::AForm(void) : _name("Nameless"), _grade_to_sign(0), _grade_to_exec(0),
                                     _already_signed(false)
 {
@@ -92,4 +97,19 @@ void AForm::beSigned(Bureaucrat& brcrt)
         throw (AForm::GradeTooLowException());
     else
         this->_already_signed = true;
+}
+
+void AForm::execute(Bureaucrat const & exctr) const
+{
+    std::cout << "Attempting to execute...\n";
+    if (exctr.getGrade() > this->_grade_to_exec)
+        throw (AForm::GradeTooLowException());
+    else if (!this->_already_signed)
+        throw (AForm::FormNotSigned());
+    else
+    {
+        action();
+        std::cout << exctr.getName() << " executed " << this->_name << " at " 
+                    << this->getTarget() << std::endl;
+    }
 }

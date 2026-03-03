@@ -6,11 +6,13 @@
 /*   By: cbuzzini <cbuzzini@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 11:34:42 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/03/02 14:23:16 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/03/03 10:40:12 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
+#include <fstream>
+#include <cstring>
 
 ShrubberyCreationForm::ShrubberyCreationForm(void) : AForm("Shrubbery Creation Form", 145, 137), _target ("Unnamed")
 {
@@ -32,10 +34,25 @@ ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& src) :
     std::cout << "Shrubbery Form " << this->getName() << " copied\n";
 }
 
-void ShrubberyCreationForm::execute(Bureaucrat const & exctr) const
+std::string ShrubberyCreationForm::getTarget(void) const
 {
-    (void) exctr;//WRITE CODE!!!!!!!!!!!!!
+    return (this->_target);
 }
+
+void ShrubberyCreationForm::action(void) const
+{
+    std::string		outfile_name = this->_target + "_shrubbery";
+	std::ofstream	dest(outfile_name.c_str());
+	if (!dest.is_open())
+	{
+    	std::cerr << "Failed to open dest file: " << std::strerror(errno) << '\n';
+		return;
+	}
+    dest << "       _-_\n    /~~   ~~\\\n /~~         ~~\\\n{               }\n"
+        << " \\  _-     -_  /\n   ~  \\ //  ~\n_- -   | | _- _\n"
+        << "  _ -  | |   -_\n      // \\\\n";
+}
+
 
 /* AForm& ShrubberyCreationForm::operator=(const AForm& src) 
 {

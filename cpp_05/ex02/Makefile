@@ -6,7 +6,7 @@
 #    By: cbuzzini <cbuzzini@student.42berlin.de>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/24 12:59:11 by cbuzzini          #+#    #+#              #
-#    Updated: 2026/03/02 11:47:43 by cbuzzini         ###   ########.fr        #
+#    Updated: 2026/03/03 10:53:37 by cbuzzini         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,7 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
+	rm -f *_shrubbery
 
 re: fclean all
 
