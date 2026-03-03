@@ -6,7 +6,7 @@
 /*   By: cbuzzini <cbuzzini@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 10:48:44 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/03/02 11:04:32 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/03/03 11:02:12 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ class Bureaucrat
         void        incrementGrade(void);
         void        decrementGrade(void);
         void        signForm(AForm &form);
+        void        executeForm(AForm const & form);
         
         class GradeTooHighException : public std::exception
         {

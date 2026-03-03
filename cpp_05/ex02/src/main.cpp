@@ -6,7 +6,7 @@
 /*   By: cbuzzini <cbuzzini@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 11:42:52 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/03/03 10:55:13 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/03/03 11:11:59 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int main ()
         delete (a);
     }
 
-    std::cout << "\nnTEST SHRUBBERY Copy constructor\n";
+    std::cout << "\nTEST SHRUBBERY Copy constructor\n";
     {
         ShrubberyCreationForm b;
         ShrubberyCreationForm d(b);
@@ -38,62 +38,35 @@ int main ()
     AForm *b = new ShrubberyCreationForm("home");
     std::cout << *b;
     std::cout << "Target: " << b->getTarget() << std::endl;
-    try
     {
-        {
-            Bureaucrat John("John", 130);
-            John.signForm(*b);
-            std::cout << *b;
-            b->execute(John);
-        }
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
+        Bureaucrat John("John", 130);
+        John.signForm(*b);
+        std::cout << *b;
+        John.executeForm(*b);
     }
     delete(b);
     
     std::cout << "\nTEST SHRUBBERY fails to sign\n";
     AForm *f = new ShrubberyCreationForm("office");
     std::cout << *f;
-    try
     {
-        {
-            Bureaucrat Jack("Jack", 146);
-            Jack.signForm(*f);
-            std::cout << *f;
-        }
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
+        Bureaucrat Jack("Jack", 146);
+        Jack.signForm(*f);
+        std::cout << *f;
     }
 
     std::cout << "\nTEST SHRUBBERY fails to execute\n";
     std::cout << *f;
-    try
+
     {
-        {
-            Bureaucrat Jack("Jack", 130);
-            f->execute(Jack);
-        }
+        Bureaucrat Jack("Jack", 130);
+        Jack.executeForm(*f);
     }
-    catch(const std::exception& e)
     {
-        std::cerr << e.what() << '\n';
-    }
-    try
-    {
-        {
-            Bureaucrat Jack("Jack", 138);
-            Jack.signForm(*f);
-            std::cout << *f;
-            f->execute(Jack);
-        }
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
+        Bureaucrat Jack("Jack", 138);
+        Jack.signForm(*f);
+        std::cout << *f;
+        Jack.executeForm(*f);
     }
     delete (f);
 

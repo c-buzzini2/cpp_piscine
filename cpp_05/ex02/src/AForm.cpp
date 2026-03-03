@@ -101,15 +101,10 @@ void AForm::beSigned(Bureaucrat& brcrt)
 
 void AForm::execute(Bureaucrat const & exctr) const
 {
-    std::cout << "Attempting to execute...\n";
     if (exctr.getGrade() > this->_grade_to_exec)
         throw (AForm::GradeTooLowException());
     else if (!this->_already_signed)
         throw (AForm::FormNotSigned());
     else
-    {
         action();
-        std::cout << exctr.getName() << " executed " << this->_name << " at " 
-                    << this->getTarget() << std::endl;
-    }
 }
