@@ -6,13 +6,14 @@
 /*   By: cbuzzini <cbuzzini@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 11:42:52 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/03/03 13:24:16 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/03/03 13:49:28 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 int main ()
 {
@@ -128,5 +129,61 @@ int main ()
         Jack.executeForm(*h);
     }
     delete (h);
+
+        std::cout << "\n\n*******PRESIDENTIAL TESTS********\n";    
+    std::cout << "\nTEST PRESIDENTIAL Default constructor\n";
+    {
+        AForm* a = new PresidentialPardonForm();
+    
+        std::cout << *a;
+        std::cout << "Target: " << a->getTarget() << std::endl;
+
+        delete (a);
+    }
+
+    std::cout << "\nTEST PRESIDENTIAL Copy constructor\n";
+    {
+        PresidentialPardonForm i;
+        PresidentialPardonForm j(i);
+    
+        std::cout << i;
+        std::cout << j;
+    }
+
+    std::cout << "\nTEST PRESIDENTIAL successfully sign and execute\n";
+    AForm *i = new PresidentialPardonForm("Wall-e");
+    std::cout << *i;
+    std::cout << "Target: " << i->getTarget() << std::endl;
+    {
+        Bureaucrat John("John", 5);
+        John.signForm(*i);
+        std::cout << *i;
+        John.executeForm(*i);
+    }
+    delete(i);
+    
+    std::cout << "\nTEST PRESIDENTIAL fails to sign\n";
+    AForm *j = new PresidentialPardonForm("Android");
+    std::cout << *j;
+    {
+        Bureaucrat Jack("Jack", 26);
+        Jack.signForm(*j);
+        std::cout << *j;
+    }
+
+    std::cout << "\nTEST PRESIDENTIAL fails to execute\n";
+    std::cout << *j;
+
+    {
+        Bureaucrat Jack("Jack", 5);
+        Jack.executeForm(*j);
+    }
+    {
+        Bureaucrat Jack("Jack", 6);
+        Jack.signForm(*j);
+        std::cout << *j;
+        Jack.executeForm(*j);
+    }
+    delete (j);
     
 }
