@@ -6,12 +6,13 @@
 /*   By: cbuzzini <cbuzzini@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 11:34:42 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/03/03 10:40:12 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/03/03 13:25:41 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
 #include <fstream>
+#include <cerrno>
 #include <cstring>
 
 ShrubberyCreationForm::ShrubberyCreationForm(void) : AForm("Shrubbery Creation Form", 145, 137), _target ("Unnamed")
@@ -50,7 +51,7 @@ void ShrubberyCreationForm::action(void) const
 	}
     dest << "       _-_\n    /~~   ~~\\\n /~~         ~~\\\n{               }\n"
         << " \\  _-     -_  /\n   ~  \\ //  ~\n_- -   | | _- _\n"
-        << "  _ -  | |   -_\n      // \\\\n";
+        << "  _ -  | |   -_\n      // \\\\\n";
 }
 
 

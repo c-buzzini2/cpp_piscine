@@ -6,7 +6,7 @@
 /*   By: cbuzzini <cbuzzini@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 11:08:38 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/03/03 11:45:14 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/03/03 13:07:56 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ void Bureaucrat::executeForm(AForm const &form)
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << this->_name << " couldn't execute: " << form.getName()
+		std::cerr << this->_name << " couldn't execute " << form.getName()
 		            << ": " << e.what() << '\n';
         return;
 	}
