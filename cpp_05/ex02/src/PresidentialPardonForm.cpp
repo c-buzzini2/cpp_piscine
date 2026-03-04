@@ -45,9 +45,9 @@ void PresidentialPardonForm::action(void) const
     std::cout << this->_target << " has been pardoned by Zaphod Beeblebrox\n";
 }
 
-
 AForm& PresidentialPardonForm::operator=(const AForm& src) 
 {
+    (void)src;
     std::cerr << "Forms have constants that cannot be assigned\n";
     return *this;
 }

@@ -52,6 +52,7 @@ Form::Form(const Form& src) : _name(src._name), _grade_to_sign(src._grade_to_sig
 
 Form& Form::operator=(const Form& src) 
 {
+    (void)src;
     std::cerr << "Forms have constants that cannot be assigned\n";
     return *this;
 }

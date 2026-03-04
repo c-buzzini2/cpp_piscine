@@ -6,7 +6,7 @@
 /*   By: cbuzzini <cbuzzini@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 11:08:38 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/03/04 09:56:51 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/03/04 10:09:56 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ Bureaucrat::Bureaucrat(const Bureaucrat& src) : _name(src._name), _grade(src._gr
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& src)
 {
+    (void)src;
     std::cerr << "Bureaucrats have constants that cannot be assigned\n";
     return *this;
 }
