@@ -6,7 +6,7 @@
 /*   By: cbuzzini <cbuzzini@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 10:48:44 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/03/02 08:56:28 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/03/04 09:57:05 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ class Bureaucrat
             const char* what(void) const throw();
         };
         
-        private:
+    private:
+        Bureaucrat& operator=(const Bureaucrat& src);
         const std::string   _name;
         int                 _grade;
-        Bureaucrat& operator=(const Bureaucrat& src);
 };
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat & brcrt);

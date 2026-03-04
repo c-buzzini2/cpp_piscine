@@ -46,11 +46,8 @@ void PresidentialPardonForm::action(void) const
 }
 
 
-/* AForm& PresidentialPardonForm::operator=(const AForm& src) 
+AForm& PresidentialPardonForm::operator=(const AForm& src) 
 {
-    (void) src;
-    std::cout << "Form " << this->getName() << " assigned\n";
+    std::cerr << "Forms have constants that cannot be assigned\n";
     return *this;
-} */
-
-//ASSIGNMENT OPERATOR????
+}

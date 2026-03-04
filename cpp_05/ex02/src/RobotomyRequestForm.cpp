@@ -49,9 +49,8 @@ void RobotomyRequestForm::action(void) const
 }
 
 
-/* AForm& RobotomyRequestForm::operator=(const AForm& src) 
+AForm& RobotomyRequestForm::operator=(const AForm& src) 
 {
-    (void) src;
-    std::cout << "Form " << this->getName() << " assigned\n";
+    std::cerr << "Forms have constants that cannot be assigned\n";
     return *this;
-} */
+}

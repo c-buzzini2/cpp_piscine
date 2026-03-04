@@ -6,7 +6,7 @@
 /*   By: cbuzzini <cbuzzini@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 14:38:46 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/03/02 10:01:11 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/03/04 09:55:46 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ class Form
             const char* what(void) const throw();
         };
         
-        private:
+    private:
         const std::string   _name;
         const int           _grade_to_sign;
         const int           _grade_to_exec;

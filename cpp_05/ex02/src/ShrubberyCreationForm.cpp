@@ -6,7 +6,7 @@
 /*   By: cbuzzini <cbuzzini@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 11:34:42 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/03/03 13:25:41 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/03/04 10:01:21 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,8 @@ void ShrubberyCreationForm::action(void) const
         << "  _ -  | |   -_\n      // \\\\\n";
 }
 
-
-/* AForm& ShrubberyCreationForm::operator=(const AForm& src) 
+AForm& ShrubberyCreationForm::operator=(const AForm& src) 
 {
-    (void) src;
-    std::cout << "Form " << this->getName() << " assigned\n";
+    std::cerr << "Forms have constants that cannot be assigned\n";
     return *this;
-} */
+}

@@ -21,15 +21,15 @@ class PresidentialPardonForm : public AForm
         PresidentialPardonForm(void);
         PresidentialPardonForm(std::string target);
         PresidentialPardonForm(const PresidentialPardonForm& src);
-        AForm& operator=(const AForm& src);
         ~PresidentialPardonForm(void);
         
         void        execute(Bureaucrat const & exctr) const;
         std::string getTarget(void) const;
         void        action(void) const;
-
+        
     private:
         std::string _target;
-};
+        AForm& operator=(const AForm& src);
+    };
 
 #endif

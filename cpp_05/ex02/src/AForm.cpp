@@ -55,13 +55,11 @@ AForm::AForm(const AForm& src) : _name(src._name), _grade_to_sign(src._grade_to_
     std::cout << "AForm " << this->getName() << " copied\n";
 }
 
-/* AForm& AForm::operator=(const AForm& src) 
+AForm& AForm::operator=(const AForm& src) 
 {
-    if (this != &src)
-    this->_already_signed = src._already_signed;
-    std::cout << "Form " << this->_name << " assigned\n";
+    std::cerr << "Forms have constants that cannot be assigned\n";
     return *this;
-} */
+}
 
 std::ostream& operator<<(std::ostream& os, const AForm & form)
 {

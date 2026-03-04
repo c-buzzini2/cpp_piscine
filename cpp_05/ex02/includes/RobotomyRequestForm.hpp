@@ -22,15 +22,15 @@ class RobotomyRequestForm : public AForm
         RobotomyRequestForm(void);
         RobotomyRequestForm(std::string target);
         RobotomyRequestForm(const RobotomyRequestForm& src);
-        AForm& operator=(const AForm& src);
         ~RobotomyRequestForm(void);
         
         void        execute(Bureaucrat const & exctr) const;
         std::string getTarget(void) const;
         void        action(void) const;
-
+        
     private:
         std::string _target;
+        AForm& operator=(const AForm& src);
 };
 
 #endif

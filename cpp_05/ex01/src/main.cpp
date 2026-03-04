@@ -6,7 +6,7 @@
 /*   By: cbuzzini <cbuzzini@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 11:42:52 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/03/02 10:25:28 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/03/04 10:04:46 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,6 @@ int main ()
             Bureaucrat d(b);
             
             std::cout << b;
-
-            //d = b;
         }
     }
     catch(const std::exception& e)
@@ -134,9 +132,7 @@ int main ()
             Form b("Security", 5, 40);
             Form d(b);
             std::cout << b;
-            
-            //d = b;
-            
+                      
             Bureaucrat John("John", 5);
             John.signForm(b);
             std::cout << b;
@@ -154,9 +150,7 @@ int main ()
             Form b("NATO", 5, 40);
             Form d(b);
             std::cout << b;
-            
-            //d = b;
-            
+                        
             Bureaucrat Mark("Mark", 6);
             Mark.signForm(b);
             std::cout << b;

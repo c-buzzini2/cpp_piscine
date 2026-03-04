@@ -6,7 +6,7 @@
 /*   By: cbuzzini <cbuzzini@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 11:08:38 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/03/02 08:58:05 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/03/04 09:56:51 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,11 @@ Bureaucrat::Bureaucrat(const Bureaucrat& src) : _name(src._name), _grade(src._gr
     std::cout << "Bureaucrat " << this->_name << " copied\n";
 }
 
-/* Bureaucrat& Bureaucrat::operator=(const Bureaucrat& src)
+Bureaucrat& Bureaucrat::operator=(const Bureaucrat& src)
 {
-    if (this != &src)
-        this->_grade = src._grade;
-    std::cout << "Bureaucrat " << this->_name << " assigned\n";
+    std::cerr << "Bureaucrats have constants that cannot be assigned\n";
     return *this;
-} */
+}
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat & brcrt)
 {
