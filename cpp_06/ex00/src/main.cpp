@@ -6,7 +6,7 @@
 /*   By: cbuzzini <cbuzzini@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 11:42:52 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/03/27 12:16:21 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/03/27 17:06:10 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 int main ()
 {
-    ScalarConverter::convert("-12.0f");
+    ScalarConverter::convert("a");
 }
