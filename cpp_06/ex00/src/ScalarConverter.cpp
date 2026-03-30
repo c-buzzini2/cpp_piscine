@@ -6,7 +6,7 @@
 /*   By: cbuzzini <cbuzzini@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/24 17:18:31 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/03/27 17:33:23 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/03/30 14:32:25 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,24 @@ input_type ScalarConverter::validate_number(std::string& input)
 	if (dot == true)
 		return (DOUBLE);
 	else
-		return (INTEGER);
+	{
+		if (valid_int(input))
+			return (INTEGER);
+		else
+		{
+			std::cout << "invalid input\n";
+			std::exit(1);		
+		}
+	}
+}
+
+bool ScalarConverter::valid_int(std::string &input)
+{
+	long val = std::strtol(input.c_str(), NULL, 10);
+	
+	if (errno == ERANGE || val > INT_MAX || val < INT_MIN)
+		return (false);
+	return (true);
 }
 
 input_type ScalarConverter::detect_type(std::string &input)
@@ -101,77 +118,76 @@ void ScalarConverter::convert(std::string input)
 	}
 }
 
-//START HERE!!!!
-
-//What is the smartest way to organize this? In every conversion in the future, I'll have to check the limits -> apparently, just for char
-// How do I detect overflow in the conversions between number types?
-void ScalarConverter::str_to_char(char first_char) //or just to_char? Do I want to call this from the number functions? In this case, I need the other check
-// if (first_char < 0 || first_char > 127)
-// 	std::cout << "char: impossible\n";
+void ScalarConverter::str_to_char(char first_char)
 {
 	if (first_char < 32 || first_char > 126)
 		std::cout << "char: non-displayable\n";
 	else
-	{
 		std::cout << "char: " << first_char << "\n";
-	}
 	std::cout << "int: " << static_cast<int>(first_char) << "\n";
 	std::cout << "float: " << static_cast<float>(first_char) << "f\n";
 	std::cout << "double: " << static_cast<double>(first_char) << "\n";
 }
 
-void ScalarConverter::str_to_int(std::string input)
+void ScalarConverter::str_to_int(std::string &input)
 {
 	int nb;
-	errno = 0;
-	long val = std::strtol(input.c_str(), NULL, 10);
-	if (errno == ERANGE || val > INT_MAX || val < INT_MIN)
-	{
-			std::cout << "invalid input\n";
-			std::exit(1);	
-	}
+	
 	nb = std::atoi(input.c_str());
+	if (!IsInRange<char, int>(nb))
+		std::cout << "char: impossible\n";
 	std::cout << "int: " << nb << "\n";
+	std::cout << "float: " << static_cast<float>(nb) << "f\n";
+	std::cout << "double: " << static_cast<double>(nb) << "\n";
 }
 
-void ScalarConverter::str_to_float(std::string input)
+void ScalarConverter::str_to_float(std::string &input)
 {
-    float nb = 0;
+    float nb;
 	
-	// try
-	// {
-	// 	nb = std::stof(input);
-	// }
-	// catch(const std::invalid_argument& e)
-	// {
-	// 	std::cerr << "Not a number\n";
-	// 	return;
-	// }
-	// catch(const std::out_of_range& e)
-	// {
-	// 	std::cerr << "Number out of range\n";
-	// 	return;
-	// }
-	std::cout << "float: " << nb << "\n";
+	try
+	{
+		nb = std::strtof(input.c_str(), NULL);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << "invalid input\n";
+		return;
+	}
+	if (!IsInRange<char, float>(nb))
+		std::cout << "char: impossible\n";
+	if (!IsInRange<int, float>(nb))
+		std::cout << "int: impossible\n";
+	else
+		std::cout << "int: " <<  static_cast<int>(nb) << "\n";
+	std::cout << "float: " << nb << "f\n";
+	std::cout << "double: " << static_cast<double>(nb) << "\n";
 }
 
-void ScalarConverter::str_to_double(std::string input)
+void ScalarConverter::str_to_double(std::string &input)
 {
-    double nb = 0;
+    double nb;
 	
-	// try
-	// {
-	// 	nb = std::stod(input);
-	// }
-	// catch(const std::invalid_argument& e)
-	// {
-	// 	std::cerr << "Not a number\n";
-	// 	return;
-	// }
-	// catch(const std::out_of_range& e)
-	// {
-	// 	std::cerr << "Number out of range\n";
-	// 	return;
-	// }
-	std::cout << "double: " << nb << "\n";
+	try
+	{
+		nb = std::strtod(input.c_str(), NULL);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << "invalid input\n";
+		return;
+	}
+	if (!IsInRange<char, double>(nb))
+		std::cout << "char: impossible\n";
+		
+	if (!IsInRange<int, double>(nb))
+		std::cout << "int: impossible\n";
+	else
+		std::cout << "int: " <<  static_cast<int>(nb) << "\n";
+		
+	if (!IsInRange<float, double>(nb))
+		std::cout << "float: impossible\n";
+	else
+		std::cout << "float: " <<  static_cast<float>(nb) << "\n";
+	std::cout << "float: " << nb << "f\n";
 }
