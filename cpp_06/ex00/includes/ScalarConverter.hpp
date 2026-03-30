@@ -6,7 +6,7 @@
 /*   By: cbuzzini <cbuzzini@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/24 17:13:40 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/03/30 13:13:20 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/03/30 14:55:13 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ class ScalarConverter
         static void str_to_double(std::string &input);
         static input_type detect_type(std::string &input);
         static input_type validate_number(std::string& input);
+        static void pseudo_literals(std::string &input);
         
         template <typename Target, typename Source>
         static bool IsInRange(Source value);
