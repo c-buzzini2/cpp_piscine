@@ -6,7 +6,7 @@
 #    By: cbuzzini <cbuzzini@student.42berlin.de>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/24 12:59:11 by cbuzzini          #+#    #+#              #
-#    Updated: 2026/03/31 11:00:01 by cbuzzini         ###   ########.fr        #
+#    Updated: 2026/03/31 11:48:05 by cbuzzini         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,16 +15,16 @@ OBJ_DIR = obj/
 INCLUDE_DIR = includes/
 
 SRC_FILES = main.cpp \
-			ScalarConverter.cpp \
-			canon_ScalarConverter.cpp \
-			parsing_ScalarConverter.cpp
+			Data.cpp \
+			Serializer.cpp
+
 			
 SRC = $(addprefix $(SRC_DIR), $(SRC_FILES))
 OBJ_FILES = $(addprefix $(OBJ_DIR), $(SRC_FILES:.cpp=.o))
 
 CXX = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
-NAME = Convert
+NAME = serialize
 
 all: $(NAME)
 
