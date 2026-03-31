@@ -6,7 +6,7 @@
 /*   By: cbuzzini <cbuzzini@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 11:01:32 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/03/31 11:49:54 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/03/31 13:10:53 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,11 @@
 #define SERIALIZER_HPP
 
 # include <stdint.h>
-# include "Data.hpp"
+
+struct Data
+{
+    int nb;
+};
 
 class Serializer
 {

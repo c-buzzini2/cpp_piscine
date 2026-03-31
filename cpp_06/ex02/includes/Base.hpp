@@ -1,37 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Data_canon.cpp                          :+:      :+:    :+:   */
+/*   Base.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbuzzini <cbuzzini@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/24 17:18:31 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/03/26 11:01:14 by cbuzzini         ###   ########.fr       */
+/*   Created: 2026/03/31 11:08:19 by cbuzzini          #+#    #+#             */
+/*   Updated: 2026/03/31 14:00:22 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Data.hpp"
+#ifndef BASE_HPP
+#define BASE_HPP
 
-Data::Data(void)
-{
-    nb = 0;
-}
+#include <cstdlib>
 
-Data::Data(int n) : nb(n)
+class Base
 {
-}
+    public:
+        virtual ~Base(void);
+		static Base* generate(void);
+        static void identify(Base* p);
+        static void identify(Base& p);
+};
 
-Data::~Data(void)
-{
-}
+class A : public Base {};
+class B : public Base {};
+class C : public Base {};
 
-Data::Data(const Data& src)
-{
-    *this = src;
-}
 
-Data& Data::operator=(const Data& src)
-{
-    this->nb = src.nb;
-    return *this;
-}
+#endif

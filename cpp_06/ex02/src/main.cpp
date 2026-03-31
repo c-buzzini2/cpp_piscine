@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Data.hpp                                           :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbuzzini <cbuzzini@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/31 11:08:19 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/03/31 11:18:24 by cbuzzini         ###   ########.fr       */
+/*   Created: 2026/02/27 11:42:52 by cbuzzini          #+#    #+#             */
+/*   Updated: 2026/03/31 14:11:58 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DATA_HPP
-#define DATA_HPP
+#include "Base.hpp"
+#include <iostream>
+#include <ctime>
 
-class Data
+int main (void)
 {
-    public:
-        Data(void);
-		Data(int n);
-        Data(const Data& src);
-        Data& operator=(const Data& src);
-        ~Data(void);
-		
-		int		get_nb(void) const;
-		void	set_nb(int n);
+    srand(time(NULL));
+    Base *gen;
 
-    private:
-        int nb;
-};
+    gen = Base::generate();
+    Base::identify(gen);
 
-#endif
+    if (!gen)
+        return (1);
+    
+    Base::identify(*gen);
+}

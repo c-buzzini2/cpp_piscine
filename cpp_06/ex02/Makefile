@@ -6,7 +6,7 @@
 #    By: cbuzzini <cbuzzini@student.42berlin.de>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/24 12:59:11 by cbuzzini          #+#    #+#              #
-#    Updated: 2026/03/31 13:11:05 by cbuzzini         ###   ########.fr        #
+#    Updated: 2026/03/31 13:28:54 by cbuzzini         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,15 +15,14 @@ OBJ_DIR = obj/
 INCLUDE_DIR = includes/
 
 SRC_FILES = main.cpp \
-			Serializer.cpp
-
+			Base.cpp
 			
 SRC = $(addprefix $(SRC_DIR), $(SRC_FILES))
 OBJ_FILES = $(addprefix $(OBJ_DIR), $(SRC_FILES:.cpp=.o))
 
 CXX = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
-NAME = serialize
+NAME = identify
 
 all: $(NAME)
 
