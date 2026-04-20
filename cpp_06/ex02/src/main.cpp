@@ -6,7 +6,7 @@
 /*   By: cbuzzini <cbuzzini@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 11:42:52 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/03/31 14:11:58 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/04/20 11:51:59 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,5 @@ int main (void)
         return (1);
     
     Base::identify(*gen);
+    delete (gen);
 }

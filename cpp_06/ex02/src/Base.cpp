@@ -44,17 +44,13 @@ void Base::identify(Base* p)
 		return;
 	}
 	if (dynamic_cast<A*>(p) != NULL)
-	{
 		std::cout << "object identified as A\n";
-	}
 	else if (dynamic_cast<B*>(p) != NULL)
-	{
 		std::cout << "object identified as B\n";
-	}	
-	else
-	{
+	else if (dynamic_cast<C*>(p) != NULL)
 		std::cout << "object identified as C\n";
-	}
+	else
+		std::cout << "could not identify object\n";
 }
 
 void Base::identify(Base& p)
@@ -79,7 +75,16 @@ void Base::identify(Base& p)
 	catch (std::exception &e)
 	{}
 
-	std::cout << "object identified as C\n";
+	try 
+	{
+		C& testC =dynamic_cast<C&>(p);
+		std::cout << "object identified as C\n";
+		(void) testC;
+		return;
+	}
+	catch (std::exception &e)
+	{}
+
+	std::cout << "could not identify object\n";
 		return;
 }
-

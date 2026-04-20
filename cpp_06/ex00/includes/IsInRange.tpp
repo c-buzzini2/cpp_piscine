@@ -6,7 +6,7 @@
 /*   By: cbuzzini <cbuzzini@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 11:36:19 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/03/30 15:16:04 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/04/20 11:14:01 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,13 @@
 template <typename Target, typename Source>
 bool ScalarConverter::IsInRange(Source value) 
 {
-    if (value >= std::numeric_limits<Target>::min() &&
+    if (typeid(Target) == typeid(float))
+    {
+        if (value >= -std::numeric_limits<Target>::max() &&
+           value <= std::numeric_limits<Target>::max())
+            return (true);
+    }
+    else if (value >= std::numeric_limits<Target>::min() &&
            value <= std::numeric_limits<Target>::max())
     {
         if (typeid(Target) == typeid(char))
