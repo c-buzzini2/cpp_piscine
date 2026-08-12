@@ -6,11 +6,11 @@
 /*   By: cbuzzini <cbuzzini@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 11:36:19 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/08/07 12:24:08 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/08/12 09:48:23 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#pragma once
 
 template <typename T>
 void swap(T& valueA, T& valueB) 

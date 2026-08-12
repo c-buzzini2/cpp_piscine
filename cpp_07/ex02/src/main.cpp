@@ -1,19 +1,34 @@
-#include "iter.hpp"
-
+#include "Array.hpp"
 
 int main (void)
 {
-    int a[] = {0, 1, 2, 3};
+    Array<int> a;
+    Array<int> b(5);
 
-    iter(a, 4, print<int>);
-    iter(a, 4, add_A<int>);
-    iter(a, 4, print<int>);
+    for (int i = 0; i < 5; i++)
+        std::cout << b[i] << std::endl;
 
-    std::string b[] = {"Hello", "awesome", "World"};
+    for (int i = 0; i < 5; i++)
+    {
+        b[i] = i + 3;
+        std::cout << b[i] << std::endl;
+    }
 
-    iter(b, 3, print<std::string>);
-    iter(b, 3, add_A< std::string>);
-    iter(b, 3, print<std::string>);
+    Array<const char*> c(2);
+    
+    c[0] = "Hello";
+    c[1] = "World";
 
-    return (0);
+    for (int i = 0; i < 2; i++)
+        std::cout << c[i] << std::endl;
+
+    try
+    {
+        std::cout << b[5];
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+
 }
