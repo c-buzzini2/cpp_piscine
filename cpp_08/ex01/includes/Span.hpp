@@ -6,7 +6,7 @@
 /*   By: cbuzzini <cbuzzini@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 11:36:19 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/10/14 14:04:47 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/10/14 15:32:30 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,11 @@ class Span
         ~Span(void);
         Span& operator=(const Span& src);
         
-        std::vector<int> getVec(void);
+        const std::vector<int>& getVec(void) const;
         
         void addNumber(int i);
-        void addRange(int size);
+        template<typename Iterator>
+        void addNumber(Iterator begin, Iterator end);
 
         unsigned int shortestSpan(void);
         unsigned int longestSpan(void);
@@ -46,3 +47,5 @@ class Span
             const char* what(void) const throw();
         };
 };
+
+#include "Span.tpp"

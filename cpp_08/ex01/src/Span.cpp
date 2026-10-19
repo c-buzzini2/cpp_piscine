@@ -6,7 +6,7 @@
 /*   By: cbuzzini <cbuzzini@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/14 11:43:07 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/10/14 14:39:38 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/10/19 13:44:15 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,10 @@ const char* Span::NoSpanException::what(void) const throw()
 
 const char* Span::FullVecException::what(void) const throw()
 {
-    return ("Span object is full");
+    return ("Span object does not have enough space left");
 }
 
-std::vector<int> Span::getVec(void)
+const std::vector<int>& Span::getVec(void) const
 {
     return (vec);
 }
@@ -61,7 +61,6 @@ void Span::addNumber(int i)
         throw (FullVecException());
     vec.push_back(i);
 }
-
 unsigned int Span::shortestSpan(void)
 {
     if (vec.size() < 2)
@@ -72,18 +71,13 @@ unsigned int Span::shortestSpan(void)
     
     std::vector<int>    diffs(vec.size());
     std::adjacent_difference(sorted.begin(), sorted.end(), diffs.begin());
-    return (*std::min_element(diffs.begin(), diffs.end()));
+    return (*std::min_element(diffs.begin() + 1, diffs.end()));
 }
 
 unsigned int Span::longestSpan(void)
 {
     if (vec.size() < 2)
         throw (NoSpanException());
-        
-    std::vector<int>    sorted(vec);
-    std::sort(sorted.begin(), sorted.end());
-    
-    std::vector<int>    diffs(vec.size());
-    std::adjacent_difference(sorted.begin(), sorted.end(), diffs.begin());
-    return (*std::max_element(diffs.begin(), diffs.end()));
+
+    return (*std::max_element(vec.begin(), vec.end()) - *std::min_element(vec.begin(), vec.end()));
 }
