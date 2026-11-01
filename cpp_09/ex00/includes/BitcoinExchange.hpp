@@ -6,7 +6,7 @@
 /*   By: cbuzzini <cbuzzini@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 11:36:19 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/10/30 13:11:36 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/11/01 09:48:16 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ class BitcoinExchange
 		void		read_file(std::ifstream& file_stream, bool file_is_db);
 		double		validate_and_print_value(std::string value_string, std::string error_msg, bool file_is_db);
 		bool		validate_and_print_date(std::string date_string, std::string error_msg, bool file_is_db);
-	
+		bool		date_exists(int year, int month, int day);
+
 	public:
 		BitcoinExchange(const char* db_file);
 		BitcoinExchange(const BitcoinExchange &src);

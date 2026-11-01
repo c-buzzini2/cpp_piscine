@@ -6,7 +6,7 @@
 /*   By: cbuzzini <cbuzzini@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/23 14:54:29 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/10/30 15:16:36 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/11/01 11:11:20 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <cctype>
 #include <sstream>
 #include <exception>
+#include <ctime>
 
 BitcoinExchange::BitcoinExchange(void)
 {
@@ -61,12 +62,6 @@ void BitcoinExchange::parse_database(const char* db_file)
 	}
 	read_file(db_stream, true);
 }
-
-//START HERE! I HAVE TO THINK OF A WAY OF DEALING WITH BAD DATABASE
-//VS BAD INPUT
-//IN THEORY, FOR BAD INPUT, I PRINT THE PROBLEM AND THEN CONTINUE PRINTING
-//BUT FOR BAD DATABASE, I'D RATHER THROW AN EXCEPTION
-//DATES ARE CONVERTED FOR VALIDATION, BUT SAVED AS STRING
 
 void BitcoinExchange::read_file(std::ifstream& file_stream, bool file_is_db)
 {
@@ -117,6 +112,7 @@ void BitcoinExchange::read_file(std::ifstream& file_stream, bool file_is_db)
 		if (file_is_db && ret != -1)
 			this->database.insert(make_pair(date, ret));
 		else if (!file_is_db)
+			//check ret
 			//convert (multiply and check limits)
 			//std::cout << std::fixed << std::setprecision(2) << value_double << "\n";
 			std::cout << "CONVERT and print!!\n";
@@ -133,8 +129,9 @@ bool BitcoinExchange::validate_and_print_date(std::string date_string, std::stri
 	std::istringstream	ss(date_string);
 	bool				invalid_date = false;
 
-	//validate date in the future, before 2009, feb + leap year, 30/31 days
-	if (!(ss >> year) || year < 2009)
+	if (date_string < "2009-01-02")
+		invalid_date = true;
+	else if (!(ss >> year))
 		invalid_date = true;
 	else if (!(ss >> dash1) || dash1 != '-')
 		invalid_date = true;
@@ -146,11 +143,55 @@ bool BitcoinExchange::validate_and_print_date(std::string date_string, std::stri
 		invalid_date = true;
 	else if (!ss.eof())
 		invalid_date = true;
+	else if (!date_exists(year, month, day))
+		invalid_date = true;
 	else if (!file_is_db)
 		std::cout << date_string << " => ";
 	if (invalid_date)
 		std::cout << error_msg << "invalid date (" << date_string << ")\n";
 	return (invalid_date);
+}
+
+bool BitcoinExchange::date_exists(int year, int month, int day)
+{
+	bool leap_year = false;
+	
+	if (month == 2)
+	{
+		if (year % 100 == 0)
+		{
+			if (year % 400 == 0)
+				leap_year = true;
+		}
+		else if (year % 4 == 0)
+			leap_year = true;
+		if ((leap_year && day > 29) || ((!leap_year) && day > 28))
+			return (false);
+	}
+	else
+	{
+		int total_days[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
+		if (day > total_days[month - 1])
+			return (false);
+	}
+	std::time_t now = std::time(NULL);
+	std::tm* today = std::localtime(&now);
+
+	if (today == NULL)
+		return (false);
+
+	int curr_year = today->tm_year + 1900;
+	int curr_month = today->tm_mon + 1;
+	int curr_day = today->tm_mday;
+
+	if (year > curr_year)
+		return (false);
+	if (year == curr_year && month > curr_month)
+		return (false);
+	if (year == curr_year && month == curr_month && day > curr_day)
+		return (false);
+	return (true);
 }
 
 double BitcoinExchange::validate_and_print_value(std::string value_string, std::string error_msg, bool file_is_db)
