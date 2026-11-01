@@ -6,7 +6,7 @@
 /*   By: cbuzzini <cbuzzini@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/23 14:54:29 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/11/01 11:11:20 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/11/01 12:38:02 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <sstream>
 #include <exception>
 #include <ctime>
+#include <algorithm>
 
 BitcoinExchange::BitcoinExchange(void)
 {
@@ -23,13 +24,7 @@ BitcoinExchange::BitcoinExchange(void)
 
 BitcoinExchange::BitcoinExchange(const char* db_file)
 {
-	parse_database(db_file);
-	//DEBUG!!!
-	std::map<std::string, double>::iterator it;
-
-	for (it = database.begin(); it != database.end(); ++it) {
-		std::cout << it->first << " " << it->second << std::endl;
-	}
+	parse_file(db_file, true);
 }
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange &src)
@@ -51,16 +46,16 @@ BitcoinExchange::~BitcoinExchange(void)
 {
 }
 
-void BitcoinExchange::parse_database(const char* db_file)
+void BitcoinExchange::parse_file(const char* file, bool file_is_db)
 {
-	std::ifstream	db_stream(db_file);
+	std::ifstream	file_stream(file);
 
-	if (!db_stream.is_open())
+	if (!file_stream.is_open())
 	{
-    	throw (std::runtime_error(std::string("Failed to open file: ")
+    	throw (std::runtime_error(std::string("Failed to open " + static_cast<std::string>(file) + ": ")
 		+ std::strerror(errno)));
 	}
-	read_file(db_stream, true);
+	read_file(file_stream, file_is_db);
 }
 
 void BitcoinExchange::read_file(std::ifstream& file_stream, bool file_is_db)
@@ -108,14 +103,11 @@ void BitcoinExchange::read_file(std::ifstream& file_stream, bool file_is_db)
 	
 		if (validate_and_print_date(date, error_msg, file_is_db) == 1)
 			continue;
-		double ret = validate_and_print_value(value_string, error_msg, file_is_db);
+		double ret = validate_value(value_string, error_msg, file_is_db);
 		if (file_is_db && ret != -1)
 			this->database.insert(make_pair(date, ret));
-		else if (!file_is_db)
-			//check ret
-			//convert (multiply and check limits)
-			//std::cout << std::fixed << std::setprecision(2) << value_double << "\n";
-			std::cout << "CONVERT and print!!\n";
+		else if (!file_is_db && ret != -1)
+			convert_and_print_value(date, ret);
 	}
 }
 
@@ -194,20 +186,23 @@ bool BitcoinExchange::date_exists(int year, int month, int day)
 	return (true);
 }
 
-double BitcoinExchange::validate_and_print_value(std::string value_string, std::string error_msg, bool file_is_db)
+double BitcoinExchange::validate_value(std::string value_string, std::string error_msg, bool file_is_db)
 {
 	double				value_double;
 	std::istringstream	ss(value_string);
 
-	if (!(ss >> value_double))
+	if (!(ss >> value_double) || value_double > std::numeric_limits<int>::max())
 		std::cout << error_msg << "Invalid numeric value: " << value_string << std::endl;
 	else if (!ss.eof())
     	std::cout << error_msg << "Unexpected characters: " << value_string << std::endl;
 	else if (value_double < 0)
     	std::cout << error_msg << "Negative value: " << value_string << std::endl;
 	else if (!file_is_db)
+	{	
 		std::cout << value_string << " = ";
-	else
+		return (value_double);
+	}
+	else if (file_is_db)
 		return (value_double);
 	return (-1);
 }
@@ -225,4 +220,25 @@ std::string BitcoinExchange::trim_spaces(const std::string& str)
         --end;
 
     return (str.substr(start, end - start));
+}
+
+void BitcoinExchange::calculate(char* input_file)
+{
+	parse_file(input_file, false);
+}
+
+void BitcoinExchange::convert_and_print_value(std::string date_string, double bitcoins)
+{
+	double	rate = 0;
+	std::map<std::string, double>::iterator it = database.upper_bound(date_string);
+
+	if (it != database.begin())
+	{
+		--it;
+		rate = it->second;
+	}
+	if (rate != 0 && bitcoins > std::numeric_limits<double>::max() / rate)
+        std::cout << "Error: number is too large\n";
+	else
+		std::cout << std::fixed << std::setprecision(2) << (bitcoins * rate) << "\n";
 }

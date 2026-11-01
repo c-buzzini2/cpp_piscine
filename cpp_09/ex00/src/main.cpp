@@ -6,7 +6,7 @@
 /*   By: cbuzzini <cbuzzini@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/17 14:17:59 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/10/23 16:13:07 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/11/01 11:21:23 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ int main (int argc, char **argv)
     {
         BitcoinExchange     exge_rate("data.csv");
         
-        //exge_rate.calculate(argv[1]);
-        (void) argv;
+        exge_rate.calculate(argv[1]);
     }
     catch(const std::exception& e)
     {
