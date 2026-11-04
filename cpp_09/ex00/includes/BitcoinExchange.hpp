@@ -6,7 +6,7 @@
 /*   By: cbuzzini <cbuzzini@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 11:36:19 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/11/01 11:58:47 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/11/01 12:43:10 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ class BitcoinExchange
 {
     private:
         std::map<std::string, double>   database;
-        //std::map<std::string, double>   input;
 		
 		BitcoinExchange(void);
 		void		parse_file(const char* file, bool file_is_db);

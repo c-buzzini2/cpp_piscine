@@ -6,7 +6,7 @@
 /*   By: cbuzzini <cbuzzini@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/23 14:54:29 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/11/01 12:38:02 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/11/01 12:43:03 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,7 @@ BitcoinExchange::BitcoinExchange(const BitcoinExchange &src)
 BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &src)
 {
 	if (this != &src)
-	{
 		this->database = src.database;
-		//this->input = src.input;
-	}
 	return (*this);
 }
 
