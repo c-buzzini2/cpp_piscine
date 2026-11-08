@@ -6,7 +6,7 @@
 /*   By: cbuzzini <cbuzzini@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 11:36:19 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/11/04 16:48:33 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/11/08 09:37:36 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,5 @@ class RPN
         ~RPN(void);
         RPN& operator=(const RPN& src);
         
-        void run(int argc, char** args);
+        void run(std::string expr);
 };

@@ -6,7 +6,7 @@
 /*   By: cbuzzini <cbuzzini@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/14 11:43:07 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/11/04 18:31:01 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/11/08 10:27:16 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,24 +34,25 @@ RPN& RPN::operator=(const RPN& src)
     return *this;
 }
 
-void RPN::run(int argc, char** argv)
+void RPN::run(std::string expr)
 {
     int result = 0;
-    
-    for (int i = 0; i < argc; i++)
+    std::istringstream ss0(expr);
+    std::string token;
+
+    while (ss0 >> token)
     {
-        std::string str = static_cast<std::string>(argv[i]);
-        if (str.size() != 1)
+        if (token.size() != 1)
             throw(std::runtime_error("Invalid parameter"));
-        if (argv[i][0] >= 48 && argv[i][0] <= 57)
+        if (token[0] >= 48 && token[0] <= 57)
         {
-            std::istringstream	ss(str);
+            std::istringstream	ss(token);
             int                 value;
             
             ss >> value;
             stk.push(value);
         }
-        else if (argv[i][0] == '+' || argv[i][0] == '-' || argv[i][0] == '*' || argv[i][0] == '/')
+        else if (token[0] == '+' || token[0] == '-' || token[0] == '*' || token[0] == '/')
         {
             if (stk.size() < 2)
                 throw(std::runtime_error("Not enough numbers"));
@@ -62,7 +63,7 @@ void RPN::run(int argc, char** argv)
                 int a = stk.top();
                 stk.pop();
             
-                switch (argv[i][0]) 
+                switch (token[0]) 
                 {
                     case '+':
                         result = a + b;
@@ -86,17 +87,7 @@ void RPN::run(int argc, char** argv)
 	    }
     }
     if (stk.size() == 1)
-        std::cout << result << std::endl;
+        std::cout << stk.top() << std::endl;
     else
         throw (std::runtime_error("Not enough operators"));
-
-    //DEBUG!!!
-    // std::cout << "STACK SIZE: " << stk.size() << std::endl;
-    // for (int i = 0; i < argc; i++)
-    // {
-    //     std::cout << stk.top() << std::endl;
-    //     stk.pop();
-    // }
-    // std::cout << "STACK SIZE: " << stk.size() << std::endl;
-
 }

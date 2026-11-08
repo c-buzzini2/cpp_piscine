@@ -6,7 +6,7 @@
 /*   By: cbuzzini <cbuzzini@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/17 14:17:59 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/11/04 18:21:57 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/11/08 10:21:39 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 int main (int argc, char** argv)
 {
-   if (argc < 4)
+   if (argc != 2 || argv[1][0] == '\0')
    {
-        std::cerr << "Not enough arguments\n";
+        std::cerr << "You need a single non-empty expression as parameter\n";
         return (1);
    }
    try
    {
         RPN  program;
-        program.run(argc - 1, argv + 1);
+        program.run(static_cast<std::string>(argv[1]));
    }
    catch(const std::exception& e)
    {
