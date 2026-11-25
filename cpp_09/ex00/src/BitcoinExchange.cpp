@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cbuzzini <cbuzzini@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: cbuzzini <cbuzzini@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/23 14:54:29 by cbuzzini          #+#    #+#             */
-/*   Updated: 2026/11/01 12:43:03 by cbuzzini         ###   ########.fr       */
+/*   Updated: 2026/11/25 14:21:44 by cbuzzini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@
 #include <exception>
 #include <ctime>
 #include <algorithm>
+#include <limits>
+#include <cstring>
+#include <cerrno>
+#include <iomanip> 
 
 BitcoinExchange::BitcoinExchange(void)
 {
