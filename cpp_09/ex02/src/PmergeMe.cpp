@@ -55,26 +55,61 @@ PmergeMe::PmergeMe(int argc, char** argv)
         vec_values.push_back(nb);
         deq_values.push_back(nb);
     }
-    for (std::vector<int>::const_iterator it = vec_values.begin(); it != vec_values.end(); ++it)
-    {
-        std::cout << *it << " ";
-    }
-    std::cout << std::endl;
-    for (std::deque<int>::const_iterator it = deq_values.begin(); it != deq_values.end(); ++it)
-    {
-        std::cout << *it << " ";
-    }
-    std::cout << std::endl;
+    // for (std::vector<int>::const_iterator it = vec_values.begin(); it != vec_values.end(); ++it)
+    // {
+    //     std::cout << *it << " ";
+    // }
+    // std::cout << std::endl;
+    // for (std::deque<int>::const_iterator it = deq_values.begin(); it != deq_values.end(); ++it)
+    // {
+    //     std::cout << *it << " ";
+    // }
+    // std::cout << std::endl;
 }
 
 std::vector<int> PmergeMe::sortVector(std::vector<int> &idxs_to_order)
 {
-    if (idxs_to_order.size() <= 1)
+    int                 vec_size = idxs_to_order.size();
+    std::vector<int>    unordered_idxs(idxs_to_order);
+    int                 odd_one_out = -1;
+
+    if (vec_size <= 1)
         return (idxs_to_order);
-    //how do I deal with an odd number?
-    std::vector<int>    temp_cpy_unordered_idxs(idxs_to_order);
-    std::vector<int>    ordered_idxs;
-    //START HERE!!!     
+    if (vec_size % 2 != 0)
+    {
+        odd_one_out = unordered_idxs.back();
+        unordered_idxs.pop_back();
+        vec_size--;
+    }
+
+    std::vector<int>    bigger;
+    std::vector<int>    smaller;
+
+    for (int i = 0; i < vec_size; i += 2)
+    {
+        int idx1 = unordered_idxs[i];
+        int idx2 = unordered_idxs[i + 1];
+        if (vec_values[idx1] < vec_values[idx2])
+        {
+            smaller.push_back(idx1);
+            bigger.push_back(idx2);
+        }
+        else // think about repeated numbers later (>=)
+        {
+            smaller.push_back(idx2);
+            bigger.push_back(idx1);
+        }
+    }
+    for (std::vector<int>::const_iterator it = bigger.begin(); it != bigger.end(); ++it)
+    {
+        std::cout << *it << " ";
+    }
+    std::cout << std::endl;
+    std::vector<int>    ordered_bigger = sortVector(bigger);
+    std::vector<int>    final_chain;
+
+
+    return (final_chain);
 }
 
 
@@ -82,7 +117,6 @@ void PmergeMe::run(void)
 {
     //track time
     int                 vec_size = vec_values.size();
-    std::cout << vec_size << "\n";
     std::vector<int>    idxs_to_order(vec_size);
     for (int i = 0; i < vec_size; i++)
         idxs_to_order[i] = i;
