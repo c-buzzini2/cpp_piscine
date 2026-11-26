@@ -84,6 +84,7 @@ std::vector<int> PmergeMe::sortVector(std::vector<int> &idxs_to_order)
 
     std::vector<int>    bigger;
     std::vector<int>    smaller;
+    std::vector<int>    lookup_partners(vec_values.size(), -1);
 
     for (int i = 0; i < vec_size; i += 2)
     {
@@ -100,13 +101,33 @@ std::vector<int> PmergeMe::sortVector(std::vector<int> &idxs_to_order)
             bigger.push_back(idx1);
         }
     }
-    for (std::vector<int>::const_iterator it = bigger.begin(); it != bigger.end(); ++it)
+    for (std::vector<int>::size_type i = 0; i < bigger.size(); i++) 
+        lookup_partners[bigger[i]] = smaller[i];
+    if (odd_one_out != -1)
+        lookup_partners[lookup_partners.size() - 1] = odd_one_out;
+
+    // for (std::vector<int>::const_iterator it = bigger.begin(); it != bigger.end(); ++it)
+    // {
+    //     std::cout << *it << " ";
+    // }
+    // std::cout << std::endl;
+    std::vector<int>    ordered_bigger = sortVector(bigger);
+    std::vector<int>    final_chain(ordered_bigger);
+
+    //the smaller partner of the smallest big is smaller than all bigs, so it goes at the beginning
+    final_chain.insert(final_chain.begin(), lookup_partners[ordered_bigger[0]]);
+
+    for (std::vector<int>::const_iterator it = final_chain.begin(); it != final_chain.end(); ++it)
     {
         std::cout << *it << " ";
     }
     std::cout << std::endl;
-    std::vector<int>    ordered_bigger = sortVector(bigger);
-    std::vector<int>    final_chain;
+    //START HERE!!!!
+    //get jacobsthal number to start inserting
+    //make sure it stops before the previous number
+    //recheck what happens with the numbers after the last jacobsthal
+    //i think they also use binary search
+    //but probably after the biggest of the highest jacobsthal small
 
 
     return (final_chain);
